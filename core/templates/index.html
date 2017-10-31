@@ -44,11 +44,17 @@
 			
 			<article class="sobre_fiap">
 				<h2>Sobre a Fiap</h2>
-					{{%if curso in cursos%}}
-						{{% if curso.ativo %}}
-							<li>{curso.nome}</li>
-						{{%endif%}}
-					{{%endif%}}		
+					<ul>
+					{% for curso in cursos %}
+						{% if curso.ativo %}
+							<p>
+						      <img src="{{ MEDIA_URL }}{{ curso.imagem.url }}">
+						      {{ curso.nome }} <br />
+						      {{ curso.tipo }}
+						  </p>
+						{% endif %}
+					{% endfor %}
+					</ul> 		
 				<h3 class="cor_padrao">FIAP.  O  NOVO  É  AQUI.</h3></p>
 			</article>
 

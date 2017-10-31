@@ -10,6 +10,7 @@ class Curso(models.Model):
 	tipo = models.CharField("Tipo",max_length=50)
 	descricao = models.TextField("Descricão",blank=(True))
 	ativo = models.BooleanField("Ativo?",default=(True))
+	imagem = models.ImageField(upload_to = "uploads",blank=True) #adiciona imagem na pasta "uploads"
 	
 	# Mostra o nome do curso formatado no painel admin do Django
 	def __str__(self):

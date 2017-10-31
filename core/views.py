@@ -1,16 +1,14 @@
 from django.shortcuts import render
 from core.models import Curso
 
+#Aqui estão as paginas views do template
+
 def paginaPrincipal(requisicao):
 
 	contexto = {
-	
-	"cursos":Curso.objects.all(),
-
-	"faculdade":"Fit - faculdade impacta de tecnologia",
-	"Pagina":"HomePage"
-	
+		"cursos": Curso.objects.all(),
 	}
+
 	return render(requisicao, "index.html",contexto)
 
 
@@ -20,3 +18,16 @@ def noticia(request):
 
 def login(request):
 	return render(request, "login.html")
+
+
+
+def testes(request):
+	contexto = {
+	
+	"cursos":Curso.objects.all(),
+
+	"faculdade":"Fit - faculdade impacta de tecnologia",
+	"Pagina":"HomePage"
+	
+	}
+	return render(request, "testes.html",contexto)

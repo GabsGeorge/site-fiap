@@ -18,11 +18,13 @@ from django.contrib import admin
 from core.views import paginaPrincipal
 from core.views import noticia
 from core.views import login
+from core.views import testes
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index', paginaPrincipal),
+    url(r'^$', paginaPrincipal),
 	url(r'^noticia', noticia),
-	url(r'^login', login)
+	url(r'^login', login),
+    url(r'^testes', testes)
  ]
  
