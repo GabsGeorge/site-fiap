@@ -1,0 +1,821 @@
+*{
+	margin: 0;
+	padding: 0;
+	
+}
+
+.disciplinas2{
+	display: grid;
+   	grid-template-columns:25% 25% 25% 25%;
+	grid-template-rows: auto;
+	background-color: black;
+}
+
+.imagemtopodisciplinas2{
+	background-image:url(../img/si_curso.jpg);
+	background-repeat: no-repeat;
+	height: 300px;
+	grid-row:1;
+   	grid-column-start: 1;
+   	grid-column-end: 5;
+   	border-bottom: solid 4px #c7134e;
+}
+	
+
+.imagemtopodisciplinas2 h1{
+	font: 50px/42px Verdana bold;
+	text-shadow: 0px 0px 3px darkred;
+   	letter-spacing: .05em;
+   	text-align: center;
+   	padding-top: 110px;
+   	text-transform: uppercase;
+	width:100%;
+	color: #fff;
+	margin-top: inherit;
+}
+
+.imagemtopodisciplinas2 img{
+	text-shadow: 0px 0px 3px darkred;
+   	letter-spacing: .05em;
+   	margin-left: 48%;
+   	padding-top: 30px;
+}
+
+/*EXPLORE A GRADE DO CURSO
+__________________________________________________________________________________________________*/
+
+.periodo{
+	grid-row:2;
+   	grid-column-start: 1;
+   	grid-column-end: 5;
+   	height: auto;
+   	background-color: black;
+   	text-align: center;
+   	border:solid 1px #c7134e;
+}
+
+.periodo h2{
+	border:solid 1px #c7134e;
+   	height: auto;
+   	color: #fff;
+   	background-color: #c7134e;
+   	text-transform: uppercase;
+   	font-size: 30px;
+}
+
+
+/*LINK PARA OS SEMESTRES
+________________________________________________________________________________________________________*/
+
+
+.psem {
+	grid-row:3;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+}
+
+.psem:hover {
+	background-color: #c7134e;
+
+}
+
+.ssem {
+	grid-row:3;
+  	grid-column-start: 2;
+   	grid-column-end: 2;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.ssem:hover{
+	background-color: #c7134e;
+}
+
+.tsem {
+	grid-row:3;
+  	grid-column-start: 3;
+   	grid-column-end: 3;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.tsem:hover{
+	background-color: #c7134e;
+}
+
+
+.qsem {
+	grid-row:3;
+  	grid-column-start: 4;
+   	grid-column-end: 4;
+    text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.qsem:hover{
+	background-color: #c7134e;
+}
+
+.quisem {
+	grid-row:4;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.quisem:hover{
+	background-color: #c7134e;
+}
+
+.sexsem{
+	grid-row:4;
+  	grid-column-start: 2;
+   	grid-column-end: 2;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.sexsem:hover{
+	background-color: #c7134e;
+}
+
+.setsem{
+	grid-row:4;
+  	grid-column-start: 3;
+   	grid-column-end: 3;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.setsem:hover{
+	background-color: #c7134e;
+}
+
+.oisem{
+	grid-row:4;
+  	grid-column-start: 4;
+   	grid-column-end: 4;
+   	text-align: center;
+	border-radius: 50px;
+	border: solid 2px #fff;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 3px red;
+	text-decoration: none;
+
+}
+
+.oisem:hover{
+	background-color: #c7134e;
+}
+
+
+/*TITULO DO PERIODO
+______________________________________________________*/
+
+.semestre1{
+	grid-row:5;
+   	grid-column-start: 1;
+   	grid-column-end: 5;
+   	color: #fff;
+   	text-align: center;
+   	text-transform: uppercase;
+   	text-shadow: 0px 0px 3px darkred;
+	border-bottom: solid 2px #fff;
+	margin: 20px;
+	padding: 7px;
+	margin-top: 50px;
+
+}
+
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Primeiras
+______________________________________________________*/
+
+.mat1{
+	grid-row:6;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat1 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+
+.mat2{
+	grid-row:6;
+   	grid-column-start: 2;
+   	grid-column-end: 2;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat2 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.mat3{
+	grid-row:6;
+   	grid-column-start: 3;
+   	grid-column-end: 3;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat3 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.mat4{
+	grid-row:6;
+   	grid-column-start: 4;
+   	grid-column-end: 4;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat4 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Utimas 
+____________________________________________________*/
+
+.mat5{
+	grid-row:7;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat5 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+
+.mat6{
+	grid-row:7;
+   	grid-column-start: 2;
+   	grid-column-end: 2;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat6 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.mat7{
+	grid-row:7;
+   	grid-column-start: 3;
+   	grid-column-end: 3;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat7 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.mat8{
+	grid-row:7;
+   	grid-column-start: 4;
+   	grid-column-end: 4;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.mat8 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+/*TITULO DO 2 PERIODO 
+_______________________________________________________________________________________________________________________*/
+
+.semestre2{
+	grid-row:8;
+   	grid-column-start: 1;
+   	grid-column-end: 5;
+   	color: #fff;
+   	text-align: center;
+   	text-transform: uppercase;
+   	text-shadow: 0px 0px 3px darkred;
+	border-bottom: solid 2px #fff;
+	margin: 20px;
+	padding: 7px;
+	margin-top: 50px;
+
+}
+
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Primeiras
+______________________________________________________________________________________________________________________*/
+
+.smat1{
+	grid-row:9;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat1 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+
+.smat2{
+	grid-row:9;
+   	grid-column-start: 2;
+   	grid-column-end: 2;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat2 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.smat3{
+	grid-row:9;
+   	grid-column-start: 3;
+   	grid-column-end: 3;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat3 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.smat4{
+	grid-row:9;
+   	grid-column-start: 4;
+   	grid-column-end: 4;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat4 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Utimas 
+_________________________________________________________________________________________________________________________*/
+
+.smat5{
+	grid-row:10;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat5 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+
+.smat6{
+	grid-row:10;
+   	grid-column-start: 2;
+   	grid-column-end: 2;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat6 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.smat7{
+	grid-row:10;
+   	grid-column-start: 3;
+   	grid-column-end: 3;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat7 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+.smat8{
+	grid-row:10;
+   	grid-column-start: 4;
+   	grid-column-end: 4;
+   	text-align: center;
+	border-radius: 50px;
+	border: dashed 2px darkred;
+	color: #fff; 
+	margin: 5px;
+	padding: 15px;
+
+}
+.smat8 h3{
+	text-transform: uppercase;
+	font-size: 18px;
+
+}
+
+
+
+/* SITE RESPONSIVO
+____________________________________________________________________________________________________________________________________*/
+
+
+@media only screen and (max-width: 900px){
+	
+.disciplinas2{
+	display: grid;
+   	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	background-color: black;
+}
+
+.imagemtopodisciplinas2{
+	background-image:url(../img/si_curso.jpg);
+	background-repeat: no-repeat;
+	height: 440px;
+	grid-row:1;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+
+}
+	
+
+/*EXPLORE A GRADE DO CURSO
+____________________________________________*/
+
+.periodo{
+	grid-row:2;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+   	height: 70px;
+}
+
+
+
+/*LINK PARA OS SEMESTRES
+______________________________________________________*/
+
+
+.psem {
+	grid-row:3;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+   	padding-top: 20px;
+
+}
+
+
+.ssem {
+	grid-row:4;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+
+}
+
+
+.tsem {
+	grid-row:5;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.qsem {
+	grid-row:6;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.quisem {
+	grid-row:7;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+
+}
+
+.sexsem{
+	grid-row:8;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.setsem{
+	grid-row:9;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.oisem{
+	grid-row:10;
+  	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+/*TITULO DO PERIODO
+______________________________________________________*/
+
+.semestre1{
+	grid-row:11;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Primeiras
+______________________________________________________*/
+
+.mat1{
+	grid-row:12;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+
+
+}
+
+.mat2{
+	grid-row:13;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+.mat3{
+	grid-row:14;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.mat4{
+	grid-row:15;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Utimas 
+____________________________________________________*/
+
+.mat5{
+	grid-row:16;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.mat6{
+	grid-row:17;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+.mat7{
+	grid-row:18;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+.mat8{
+	grid-row:19;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+
+/*TITULO DO 2 PERIODO 
+______________________________________________________*/
+
+.semestre2{
+	grid-row:20;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Primeiras
+______________________________________________________*/
+
+.smat1{
+	grid-row:21;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+
+}
+
+
+.smat2{
+	grid-row:22;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+.smat3{
+	grid-row:23;
+   	grid-column-start: 1;
+   	grid-column-end:1;
+}
+
+.smat4{
+	grid-row:24;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+ 
+}
+
+
+/*DESCRIÇÃO DAS DISCIPLINAS - 4 Utimas 
+____________________________________________________*/
+
+.smat5{
+	grid-row:25;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+
+.smat6{
+	grid-row:26;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+.smat7{
+	grid-row:27;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}
+
+.smat8{
+	grid-row:28;
+   	grid-column-start: 1;
+   	grid-column-end: 1;
+}

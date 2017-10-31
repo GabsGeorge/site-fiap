@@ -1,0 +1,600 @@
+*{
+	margin: 0;
+	padding: 0;
+	
+}
+/*Centralizando elemento*/
+.centralizar_elemento {
+	height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+/*btn abre menu*/
+label[for="bt_menu"]{
+	display: none;
+	padding: 5px;
+	margin-top: 10px; 
+	background-color: #222;
+	color: #fff;
+	font-family: Arial;
+	text-align: center;
+	font-size: 30px;
+	width: 50px;
+	height: 50px;
+	grid-row:1;
+	grid-column:1;
+	
+}
+
+#bt_menu{
+	display: none;
+}
+
+.cor_padrao{
+color: #db1858;
+}
+
+/*Margem para menu fixo*/
+.margem_sup{
+	width: 100%;
+	height: 80px;
+	background-color: #fff;
+}
+
+
+
+/*Estilizando_Topo*/
+
+
+.page-header {
+   	display: grid;
+    grid-template-columns: 15% 20% 20%;
+    grid-template-rows: 80px;
+    background-color: #000;
+    position: fixed;
+    z-index: 6;
+    width: 100%;
+}
+
+
+.page-logo{
+	grid-row: 1;
+    grid-column:1;
+}
+
+.page-menu {
+    grid-row: 1;
+    grid-column:2;
+    font-weight:10;
+}
+
+.page-menu ul{
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	
+}
+
+.page-menu li{
+	flex:auto;
+	padding-left: 20px;
+
+}
+
+.page-menu a{
+	text-decoration: none;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+	font: 14px Arial;
+	font-weight: bold;
+
+}
+
+.page-menu a:before{
+	content: '';
+	width:15px;
+	height: 3px;
+	background: #ed145d;
+	position: absolute;
+	top: 90%;
+	left: 10px;
+	transition: .5s;
+
+}
+
+.page-menu ul li:hover a:before{
+	width: 50%;
+
+}
+
+.bt_login{
+	grid-row: 1;
+    grid-column:3;
+    text-align: center;
+	text-decoration: none;
+	list-style: none;
+	font: 14px Arial;	
+	color: #fff;
+}
+
+.bt_login:hover{
+	color: #ed145d;
+	transition: .5s;
+}
+
+/*______________________________Responsivo_Topo_Inicio_______________________________________*/
+
+/* iPads (restrato e paisagem) */
+@media only screen and (max-width :860px) {
+      /* estilos */
+
+    .page-header {
+   	display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 80px; 
+	}
+
+
+	#bt_menu:checked ~ .page-menu {
+		display: block;
+	}
+
+	label[for="bt_menu"]{
+	display: block;
+	
+	}
+
+    .page-logo{
+		grid-row: 1;
+    	grid-column:2;
+	}
+
+	.page-menu {
+		display: none;
+		width: 100%;
+		grid-row-start:2;
+		grid-row-end:3;
+    	grid-column-start: 1;
+    	grid-column-end: 4;
+    	background: #ed145d;
+    	transition: all .5s;
+    }
+
+
+	.page-menu ul{
+		display: block;
+		width: 100%;
+	}
+
+	.page-menu li{
+		padding: 20px;
+		flex:none;
+		border:solid 1px black;
+	}
+
+	.page-menu li:hover{
+		background-color: rgba(0, 0, 0, 0.8);
+		transition: .5s;
+	}
+
+	.page-menu a:before{
+		background-color: #fff;
+	}
+
+}
+
+/*__________________________________Responsivo_Topo_Fim_____________________*/
+
+/*Estilizando_Topo_fim*/
+
+/*Estilizando_Corpo_Inicio*/
+
+.page_content{
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto;
+    background-image:url(../img/bg_conteudo.png);
+}
+
+/*banner_principal*/
+.banner_principal  {
+	background-image:url(../img/rock.png);
+ 	max-width:100%;
+ 	height: 450px;
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ 	margin-bottom: 10px;
+ 	border-bottom: 2px solid #db1858;
+ 	grid-row:1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.texto_banner{
+	color: #fff;
+	font-size: 25px;
+ 	text-decoration: none;
+ 	grid-row:1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    position: absolute;
+    left: 10%;
+    top: 25%;
+
+}
+
+.texto_banner h1{
+	font-size: 55px;
+}
+.texto_banner h2{
+	font-size: 40px;
+}
+
+.video{
+	width :100%;
+	height:300px; 
+	grid-row:2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+/*Noticias*/
+.noticias01{
+	background-image:url(../img/mba.jpg);
+ 	background-repeat: no-repeat;
+ 	height: 700px;
+ 	grid-row:2;
+    grid-column-start: 3;
+    grid-column-end: 5;
+ }
+
+
+
+.noticias01 a{
+	text-align: left;	
+	text-decoration: none;
+	color: #a7a7a7;
+    font: 16px/18px Roboto;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+
+.noticias02{
+ 	grid-row:2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    position: relative;
+    padding-top: 22%;
+
+}
+
+.noticias02 ul{
+	display: flex;
+}
+
+
+.noticias02 li{
+	padding:10px;
+}
+
+.noticias02 a{
+	text-decoration: none;
+}
+
+
+.noticias02 a{
+	text-align: left;	
+	text-decoration: none;
+	color: #a7a7a7;
+    font: 16px/18px Roboto;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.noticias03{
+ 	grid-row:4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    position: relative;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.noticias03 ul{
+	display: flex;
+}
+
+
+.noticias03 li{
+	padding:20px;
+}
+
+.noticias03 a{
+	text-decoration: none;
+}
+
+.noticias03 a{
+	text-align: left;	
+	text-decoration: none;
+	color: #a7a7a7;
+    font: 16px/18px Roboto;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.chamada{
+	width: 300px;
+	height: 150px;
+	display: flex;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 16px;
+	margin-left: 105px; 
+}
+
+.sobre_fiap{
+	font: 17px/42px Gotham HTF Book;
+    letter-spacing: .05em;
+    text-align: center;
+    padding-top: 25px;
+    color: #b8b8b8;
+    background-image:url(../img/background.jpg);
+ 	width:100%;
+ 	height: 750px;
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ 	grid-row:4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+}
+/*Estilizando_corpo_fim*/
+
+/*______________________________Responsivo_Corpo_Inicio_______________________________________*/
+
+/* iPads (restrato e paisagem) */
+@media only screen and  (max-width :1260px) {
+
+	.page_content{
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto auto auto;
+    background-image:url(../img/bg_conteudo.png);
+	}
+		
+		.video{
+	width :400px;
+	height:300px; 
+	margin: 0 auto;
+	grid-row:2;
+    grid-column-start: 1;
+    grid-column-end: 5;
+	}
+	   .noticias01{
+	 	display: none;
+	 }
+
+
+
+	.noticias02{
+	 	grid-row:3;
+	    grid-column-start: 1;
+	    grid-column-end: 5;
+	    display: flex;
+	    flex: auto;
+	}
+
+		.sobre_fiap{
+	 	grid-row:4;
+	    grid-column-start: 1;
+	    grid-column-end: 5;
+
+	}
+
+	.noticias02{
+	    position: relative;
+	    padding-top: 5%;
+
+	}
+
+	.noticias03{
+ 	grid-row:4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    position: relative;
+    width: 100%;
+}
+
+
+}
+
+@media only screen and (max-width :762px) {
+
+
+	.noticias02 ul{
+		display: block;
+	}
+
+	.noticias03{
+ 	grid-row:5;
+	}
+
+	.noticias03 ul{
+		display: block;
+		margin-bottom: 10%;
+	}
+
+
+}
+
+@media only screen and  (max-width :429px) {
+		.video{
+	width :300px;
+	height:200px; 
+	margin: 0 auto;
+	grid-row:2;
+    grid-column-start: 1;
+    grid-column-end: 5;
+	}
+
+}
+
+/*______________________________Responsivo_Corpo_Fim_______________________________________*/
+
+
+
+/*Estilizando_rodapé_Inicio*/
+
+
+
+/*Rodapé*/
+
+.page-rodape{
+	display: grid;
+    grid-template-columns: 200px 200px 200px 200px ;
+    grid-template-rows: 350px 30px;
+    background-color: #000;
+}
+
+.logo_rodape{
+	padding:40px;
+	padding-top: 60px;
+	grid-row:1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+.copy{
+	width: 100%;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	background-color: black;
+	grid-row:2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+ 
+}
+
+.copy hr{
+	size:30px;
+	color: #ccc;
+}
+
+
+.menu_institucional_01{
+	grid-row:1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    position: relative;
+    width:200px;
+    height: 300px;
+}
+
+
+.menu_institucional_01 li{
+	list-style: none;
+	padding-top: 15px; 
+	transition: color .4s;
+}
+
+.menu_institucional_01 li a{
+	color: #868686;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.menu_institucional_01 li a:hover{
+ 	color: #fff;
+}
+
+.menu_institucional_02{
+	grid-row:1;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    position: relative;
+    width:200px;
+    height: 300px; 
+}
+
+.menu_institucional_02 li{
+	list-style: none;
+	padding-top: 15px; 
+	transition: color .4s;
+}
+
+.menu_institucional_02 li a{
+	color: #868686;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.menu_institucional_02 li a:hover{
+ 	color: #fff;
+}
+
+
+.siga{
+	color: #fff;
+	font-size: 18px;
+}
+
+@media only screen and  (max-width :762px) {
+	
+	.page-rodape{
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto;
+    background-color: #000;
+	}
+
+	.logo_rodape{
+	margin-left: 50%;
+	padding-top: 60px;
+	grid-row:1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+	.menu_institucional_01{
+	grid-row:2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    position: relative;
+    width:200px;
+    height: 300px;
+	}
+
+	.menu_institucional_02{
+	grid-row:3;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    position: relative;
+    width:200px;
+    height: 300px;
+	}
+
+	.copy{
+	width: 100%;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	background-color: black;
+	grid-row:4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+ 
+	}
+
+}
+
+
+
+/*_____________Detalhes de curso_____________*/
