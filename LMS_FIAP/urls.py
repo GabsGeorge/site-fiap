@@ -25,6 +25,5 @@ urlpatterns = [
     url(r'^$', paginaPrincipal),
 	url(r'^noticia', noticia),
 	url(r'^login', login),
-    url(r'^testes', testes)
  ]
  
