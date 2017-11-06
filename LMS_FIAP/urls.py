@@ -15,15 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from core.views import paginaPrincipal
+from core.views import index
 from core.views import noticia
 from core.views import login
+from core.views import testes
+from core.views import lista_cursos
 from core.views import testes
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', paginaPrincipal),
+    url(r'^index', index),
 	url(r'^noticia', noticia),
 	url(r'^login', login),
+    url(r'^lista-cursos', lista_cursos)
+    url(r'^testes', teste)
  ]
  

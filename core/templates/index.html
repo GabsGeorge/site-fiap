@@ -46,13 +46,10 @@
 				<h2>Sobre a Fiap</h2>
 					<ul>
 					{% for curso in cursos %}
-						{% if curso.ativo %}
 							<p>
-						      <img src="{{ MEDIA_URL }}{{ curso.imagem.url }}">
 						      {{ curso.nome }} <br />
-						      {{ curso.tipo }}
+						      {{ curso.sigla }}
 						  </p>
-						{% endif %}
 					{% endfor %}
 					</ul> 		
 				<h3 class="cor_padrao">FIAP.  O  NOVO  É  AQUI.</h3></p>

@@ -3,7 +3,7 @@ from core.models import Curso
 
 #Aqui estão as paginas views do template
 
-def paginaPrincipal(requisicao):
+def index(requisicao):
 
 	contexto = {
 		"cursos": Curso.objects.all(),
@@ -31,3 +31,11 @@ def testes(request):
 	
 	}
 	return render(request, "testes.html",contexto)
+
+def lista_cursos(request):
+	contexto = {
+	
+	"cursos":Curso.objects.all()
+	
+	}
+	return render(request, "lista_cursos.html",contexto)
