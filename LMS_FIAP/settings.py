@@ -75,18 +75,29 @@ WSGI_APPLICATION = 'LMS_FIAP.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
+
+# Database
+# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
 DATABASES = {
-   'default': {
-       'ENGINE': "sql_server.pyodbc",
-       'HOST': "SAC-PC", 
-       'USER': "usuario1", 
-       'PASSWORD': "123456",
-       'NAME': "faculdade", #nome do banco
-       'OPTIONS': {
-           'host_is_server': True
-       },
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+#DATABASES = {
+#   'default': {
+#       'ENGINE': "sql_server.pyodbc",
+#       'HOST': "SAC-PC", 
+#       'USER': "usuario1", 
+#       'PASSWORD': "123456",
+#       'NAME': "faculdade", #nome do banco
+#       'OPTIONS': {
+#           'host_is_server': True
+#       },
+#   }
+#}
 
 
 
@@ -130,4 +141,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'index')
+#MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')

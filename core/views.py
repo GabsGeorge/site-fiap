@@ -1,15 +1,11 @@
 from django.shortcuts import render
 from core.models import Curso
+from core.models import Disciplina
 
 #Aqui estão as paginas views do template
 
 def index(requisicao):
-
-	contexto = {
-		"cursos": Curso.objects.all(),
-	}
-
-	return render(requisicao, "index.html",contexto)
+	return render(requisicao, "index.html")
 
 
 def noticia(request):
@@ -20,22 +16,20 @@ def login(request):
 	return render(request, "login.html")
 
 
-
-def testes(request):
-	contexto = {
-	
-	"cursos":Curso.objects.all(),
-
-	"faculdade":"Fit - faculdade impacta de tecnologia",
-	"Pagina":"HomePage"
-	
-	}
-	return render(request, "testes.html",contexto)
-
 def lista_cursos(request):
 	contexto = {
 	
 	"cursos":Curso.objects.all()
 	
 	}
+
 	return render(request, "lista_cursos.html",contexto)
+
+def disciplinas(request):
+	contexto = {
+	"disciplinas":Disciplina.objects.all()
+	}
+	return render(request, "disciplinas.html")
+
+def detalhe_de_cursos(request):
+	return render(request, "detalhe_de_cursos.html")

@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block conteudo %}
 		
-					
-
 		<!--Inicio_Corpo-->	
 		<section class="page_content_cursos">	
 			
@@ -18,18 +16,19 @@
 			
 			</article>	
 
-			
+			{%for curso in cursos%}		
+			<li>
 				<article class="lista_cursos01">
 					<a href="detalhe_de_cursos.html">
-						<img src="/static/img/adm.jpg">
-						{% for curso in cursos %}	
-							<strong class="txt_cursos">{{ curso.nome }}</strong>
-						{% endfor %}	
+						<img src="/static/img/adm.jpg"> 
+						<strong class="txt_cursos">{{curso.nome}}</strong>
 					</a>
-				</article>		
+				</article>
+			</li>
+			{%endfor%}			
 					
 					
-				<article class="lista_cursos02">
+			<!--	<article class="lista_cursos02">
 					<a href="detalhe_de_cursos.html">
 						<img src="/static/img/ads.jpg">
 							<strong class="txt_cursos">Analise e Desenvolvimento</strong>
@@ -50,7 +49,7 @@
 					</a>	
 				</article>
 			
-			<!--Conteudo_Cursos02-->
+			Conteudo_Cursos02
 
 				<article class="lista_cursos05"><a href="detalhe_de_cursos.html">
 						<img src="/static/img/gti.jpg">
@@ -72,11 +71,15 @@
 				
 				<article class="lista_cursos08"><a href="detalhe_de_cursos.html">
 						<img src="/static/img/multimidia.jpg">
-							<strong class="txt_cursos">Graduação em produção multimídia</strong>
+							<strong class="txt_cursos">Graduação em produção<br/> multimídia</strong>
 						</a>	
 				</article>
+
+				<a class="cadastre_curso" href="cadastro_curso.html">
+						<strong class="txt_cadastro_curso">Cadastre um novo curso</strong>
+				</a>	
+			-->
 		</section> 
 		
 		<!--Fim_Corpo-->
-
 {%endblock%}	
