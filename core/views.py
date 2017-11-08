@@ -33,3 +33,7 @@ def disciplinas(request):
 
 def detalhe_de_cursos(request):
 	return render(request, "detalhe_de_cursos.html")
+
+
+def questionario(request):
+	return render(request, "questionario.html")

@@ -8,6 +8,7 @@ class Curso(models.Model):
     sigla = models.CharField("Sigla", db_column='Sigla', max_length=5)  # Field name made lowercase.
     nome = models.CharField("Nome do Curso", db_column='Nome', max_length=50)  # Field name made lowercase.
     img = models.ImageField (upload_to = 'media', null = True, blank = True) #adiciona imagem na pasta "media"
+    # Esta linha acima dá erro quando clona ERROR"core.Curso.img" Pillow is not instaled
 
     # Mostra o nome do curso formatado no painel admin do Django
     def __str__(self):
