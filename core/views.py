@@ -4,8 +4,9 @@ from core.models import Disciplina
 
 #Aqui estão as paginas views do template
 
-def index(requisicao):
-	return render(requisicao, "index.html")
+
+def index(request):
+	return render(request, "index.html")
 
 
 def noticia(request):
@@ -16,19 +17,18 @@ def login(request):
 	return render(request, "login.html")
 
 
-def lista_cursos(request):
+def Cursos(request):
 	contexto = {
-	
-	"cursos":Curso.objects.all()
-	
+		"cursos":Curso.objects.all()
+	}
+	return render(request,"lista_cursos.html", contexto)
+
+
+def Disciplina(request):
+	contexto = {
+		"disciplinas":Disciplina.objects.all()
 	}
 
-	return render(request, "lista_cursos.html",contexto)
-
-def disciplinas(request):
-	contexto = {
-	"disciplinas":Disciplina.objects.all()
-	}
 	return render(request, "disciplinas.html")
 
 def detalhe_de_cursos(request):

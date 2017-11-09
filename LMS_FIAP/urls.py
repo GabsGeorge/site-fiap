@@ -18,18 +18,19 @@ from django.contrib import admin
 from core.views import index
 from core.views import noticia
 from core.views import login
-from core.views import lista_cursos
-from core.views import disciplinas
+from core.views import Cursos
+from core.views import Disciplina
 from core.views import detalhe_de_cursos
 from core.views import questionario
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index', index),
+    url(r'^$', index),
 	url(r'^noticia', noticia),
 	url(r'^login', login),
-    url(r'^lista_cursos', lista_cursos),
-    url(r'^disciplinas', disciplinas),
+    url(r'^lista_cursos', Cursos),
+    url(r'^Disciplina', Disciplina),
     url(r'^detalhe_de_cursos', detalhe_de_cursos),
     url(r'^questionario', questionario)
  ]

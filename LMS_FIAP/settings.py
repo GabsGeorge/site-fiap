@@ -79,25 +79,25 @@ WSGI_APPLICATION = 'LMS_FIAP.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 #DATABASES = {
-#   'default': {
-#       'ENGINE': "sql_server.pyodbc",
-#       'HOST': "SAC-PC", 
-#       'USER': "usuario1", 
-#       'PASSWORD': "123456",
-#       'NAME': "faculdade", #nome do banco
-#       'OPTIONS': {
-#           'host_is_server': True
-#       },
-#   }
+#    'DEFAULT': {
+#        'NAME': OS.PATH.JOIN(BASE_DIR, 'DB.SQLITE3'),
+#        'ENGINE': 'DJANGO.DB.BACKENDS.SQLITE3',
+#    }
 #}
+
+DATABASES = {
+   'default': {
+       'ENGINE': "sql_server.pyodbc",
+       'HOST': "SAC-PC", 
+       'USER': "usuario1", 
+       'PASSWORD': "123456",
+       'NAME': "faculdade", #nome do banco
+       'OPTIONS': {
+           'host_is_server': True
+       },
+   }
+}
 
 
 
