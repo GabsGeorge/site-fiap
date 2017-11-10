@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Aluno(models.Model):
-    idaluno = models.IntegerField(db_column='IdAluno', primary_key=True)  # Field name made lowercase.
+    idaluno = models.IntegerField(db_column='IdAluno', unique=True)  # Field name made lowercase.
     idcurso = models.ForeignKey('Curso', models.DO_NOTHING, db_column='IdCurso')  # Field name made lowercase.
     ra_aluno = models.IntegerField(db_column='RA_Aluno')  # Field name made lowercase.
     nome = models.CharField(db_column='Nome', max_length=120)  # Field name made lowercase.
@@ -18,7 +18,7 @@ class Aluno(models.Model):
 
 
 class Arquivosquestao(models.Model):
-    idarquivosquestao = models.IntegerField(db_column='IdArquivosQuestao', primary_key=True)  # Field name made lowercase.
+    idarquivosquestao = models.IntegerField(db_column='IdArquivosQuestao', unique=True)  # Field name made lowercase.
     idquestao = models.ForeignKey('Questao', models.DO_NOTHING, db_column='IdQuestao')  # Field name made lowercase.
     iddisciplina = models.ForeignKey('Disciplina', models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey('Disciplinaofertada', models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
@@ -32,7 +32,7 @@ class Arquivosquestao(models.Model):
 
 
 class Arquivosrespostas(models.Model):
-    idarquivoresposta = models.IntegerField(db_column='IdArquivoResposta', primary_key=True)  # Field name made lowercase.
+    idarquivoresposta = models.IntegerField(db_column='IdArquivoResposta', unique=True)  # Field name made lowercase.
     iddisciplina = models.ForeignKey('Disciplina', models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey('Disciplinaofertada', models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
     idturma = models.ForeignKey('Turma', models.DO_NOTHING, db_column='IdTurma')  # Field name made lowercase.
@@ -48,7 +48,7 @@ class Arquivosrespostas(models.Model):
 
 
 class Curso(models.Model):
-    idcurso = models.IntegerField(db_column='IdCurso', primary_key=True)  # Field name made lowercase.
+    idcurso = models.IntegerField(db_column='IdCurso', unique=True)  # Field name made lowercase.
     sigla = models.CharField(db_column='Sigla', max_length=5)  # Field name made lowercase.
     nome = models.CharField(db_column='Nome', max_length=50)  # Field name made lowercase.
 
@@ -59,7 +59,7 @@ class Curso(models.Model):
 
 
 class Cursoturma(models.Model):
-    idcursoturma = models.IntegerField(db_column='IdCursoTurma', primary_key=True)  # Field name made lowercase.
+    idcursoturma = models.IntegerField(db_column='IdCursoTurma', unique=True)  # Field name made lowercase.
     idcurso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='IdCurso')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey('Disciplinaofertada', models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
     idturma = models.ForeignKey('Turma', models.DO_NOTHING, db_column='IdTurma')  # Field name made lowercase.
@@ -70,7 +70,7 @@ class Cursoturma(models.Model):
 
 
 class Disciplina(models.Model):
-    iddisciplina = models.IntegerField(db_column='IdDisciplina', primary_key=True)  # Field name made lowercase.
+    iddisciplina = models.IntegerField(db_column='IdDisciplina', unique=True)  # Field name made lowercase.
     nome = models.CharField(db_column='Nome', max_length=240)  # Field name made lowercase.
     cargahoraria = models.SmallIntegerField(db_column='CargaHoraria')  # Field name made lowercase.
     teoria = models.DecimalField(db_column='Teoria', max_digits=3, decimal_places=0)  # Field name made lowercase.
@@ -89,7 +89,7 @@ class Disciplina(models.Model):
 
 
 class Disciplinaofertada(models.Model):
-    iddisciplinaofertada = models.IntegerField(db_column='IdDisciplinaOfertada', primary_key=True)  # Field name made lowercase.
+    iddisciplinaofertada = models.IntegerField(db_column='IdDisciplinaOfertada', unique=True)  # Field name made lowercase.
     iddisciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     anoofertado = models.SmallIntegerField(db_column='AnoOfertado')  # Field name made lowercase.
     semestreofertado = models.CharField(db_column='SemestreOfertado', max_length=1)  # Field name made lowercase.
@@ -101,7 +101,7 @@ class Disciplinaofertada(models.Model):
 
 
 class Gradecurricular(models.Model):
-    idgradecurricular = models.IntegerField(db_column='IdGradeCurricular', primary_key=True)  # Field name made lowercase.
+    idgradecurricular = models.IntegerField(db_column='IdGradeCurricular', unique=True)  # Field name made lowercase.
     idcurso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='IdCurso')  # Field name made lowercase.
     ano = models.IntegerField(db_column='Ano')  # Field name made lowercase.
     semestre = models.CharField(db_column='Semestre', max_length=1)  # Field name made lowercase.
@@ -113,7 +113,7 @@ class Gradecurricular(models.Model):
 
 
 class Matricula(models.Model):
-    idmatricula = models.IntegerField(db_column='IdMatricula', primary_key=True)  # Field name made lowercase.
+    idmatricula = models.IntegerField(db_column='IdMatricula', unique=True)  # Field name made lowercase.
     idaluno = models.ForeignKey(Aluno, models.DO_NOTHING, db_column='IdAluno')  # Field name made lowercase.
     iddisciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
@@ -125,7 +125,7 @@ class Matricula(models.Model):
 
 
 class Periodo(models.Model):
-    idperiodo = models.IntegerField(db_column='IdPeriodo', primary_key=True)  # Field name made lowercase.
+    idperiodo = models.IntegerField(db_column='IdPeriodo', unique=True)  # Field name made lowercase.
     idcurso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='IdCurso')  # Field name made lowercase.
     idgradecurricular = models.ForeignKey(Gradecurricular, models.DO_NOTHING, db_column='IdGradeCurricular')  # Field name made lowercase.
     numeroperiodo = models.SmallIntegerField(db_column='NumeroPeriodo')  # Field name made lowercase.
@@ -137,7 +137,7 @@ class Periodo(models.Model):
 
 
 class Periododisciplina(models.Model):
-    idperiododisciplina = models.IntegerField(db_column='IdPeriodoDisciplina', primary_key=True)  # Field name made lowercase.
+    idperiododisciplina = models.IntegerField(db_column='IdPeriodoDisciplina', unique=True)  # Field name made lowercase.
     idcurso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='IdCurso')  # Field name made lowercase.
     idgradecurricular = models.ForeignKey(Gradecurricular, models.DO_NOTHING, db_column='IdGradeCurricular')  # Field name made lowercase.
     idperiodo = models.ForeignKey(Periodo, models.DO_NOTHING, db_column='IdPeriodo')  # Field name made lowercase.
@@ -149,7 +149,7 @@ class Periododisciplina(models.Model):
 
 
 class Professor(models.Model):
-    idprofessor = models.IntegerField(db_column='IdProfessor', primary_key=True)  # Field name made lowercase.
+    idprofessor = models.IntegerField(db_column='IdProfessor', unique=True)  # Field name made lowercase.
     ra_professor = models.IntegerField(db_column='RA_Professor')  # Field name made lowercase.
     apelido = models.CharField(db_column='Apelido', max_length=30)  # Field name made lowercase.
     nome = models.CharField(db_column='Nome', max_length=30)  # Field name made lowercase.
@@ -163,7 +163,7 @@ class Professor(models.Model):
 
 
 class Questao(models.Model):
-    idquestao = models.IntegerField(db_column='IdQuestao', primary_key=True)  # Field name made lowercase.
+    idquestao = models.IntegerField(db_column='IdQuestao', unique=True)  # Field name made lowercase.
     iddisciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
     idturma = models.ForeignKey('Turma', models.DO_NOTHING, db_column='IdTurma')  # Field name made lowercase.
@@ -179,7 +179,7 @@ class Questao(models.Model):
 
 
 class Resposta(models.Model):
-    idresposta = models.IntegerField(db_column='IdResposta', primary_key=True)  # Field name made lowercase.
+    idresposta = models.IntegerField(db_column='IdResposta', unique=True)  # Field name made lowercase.
     iddisciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
     idturma = models.ForeignKey('Turma', models.DO_NOTHING, db_column='IdTurma')  # Field name made lowercase.
@@ -197,7 +197,7 @@ class Resposta(models.Model):
 
 
 class Turma(models.Model):
-    idturma = models.IntegerField(db_column='IdTurma', primary_key=True)  # Field name made lowercase.
+    idturma = models.IntegerField(db_column='IdTurma', unique=True)  # Field name made lowercase.
     iddisciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='IdDisciplinaOfertada')  # Field name made lowercase.
     idprofessor = models.ForeignKey(Professor, models.DO_NOTHING, db_column='IdProfessor')  # Field name made lowercase.

@@ -87,18 +87,14 @@ WSGI_APPLICATION = 'LMS_FIAP.wsgi.application'
 #}
 
 DATABASES = {
-   'default': {
-       'ENGINE': "sql_server.pyodbc",
-       'HOST': "SAC-PC", 
-       'USER': "usuario1", 
-       'PASSWORD': "123456",
-       'NAME': "faculdade", #nome do banco
-       'OPTIONS': {
-           'host_is_server': True
-       },
-   }
+    'default': {
+        'ENGINE' : 'sql_server.pyodbc',
+        'NAME' : 'LMS-FINAL',
+        'USER' : 'usuario1',
+        'PASSWORD' : '123@admin',
+        'HOST' : 'lmsfinal.database.windows.net'
+    }
 }
-
 
 
 
