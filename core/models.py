@@ -11,10 +11,10 @@ from django.db import models
 
 class Aluno(models.Model):
     ra = models.IntegerField(db_column='RA', unique=True)  # Field name made lowercase.
-    nome = models.CharField(db_column='Nome', max_length=120)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=80, blank=True, null=True)  # Field name made lowercase.
+    nome = models.CharField(db_column='Nome', max_length=130)  # Field name made lowercase.
+    email = models.CharField(db_column='Email', max_length=70, blank=True, null=True)  # Field name made lowercase.
     celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
-    sigla_curso = models.CharField(db_column='Sigla_Curso', max_length=2)  # Field name made lowercase.
+    sigla_curso = models.CharField(db_column='Sigla_Curso', max_length=4)  # Field name made lowercase.
 
     def __str__(self):
         return self.nome
