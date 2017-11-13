@@ -16,6 +16,8 @@ class Aluno(models.Model):
     celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
     sigla_curso = models.CharField(db_column='Sigla_Curso', max_length=2)  # Field name made lowercase.
 
+    def __str__(self):
+        return self.nome
 
 class Arquivoquestoes(models.Model):
     nome_disciplina = models.CharField(db_column='Nome_Disciplina', max_length=240)  # Field name made lowercase.
@@ -40,7 +42,8 @@ class Curso(models.Model):
     sigla = models.CharField(db_column='Sigla', unique=True, max_length=5)  # Field name made lowercase.
     nome = models.CharField(db_column='Nome', unique=True, max_length=50)  # Field name made lowercase.
 
-    
+    def __str__(self):
+        return self.nome
 
 class Cursoturma(models.Model):
     sigla_curso = models.CharField(db_column='Sigla_Curso', max_length=5)  # Field name made lowercase.
@@ -63,7 +66,8 @@ class Disciplina(models.Model):
     bibliografia_basica = models.TextField(db_column='Bibliografia_Basica')  # Field name made lowercase. This field type is a guess.
     bibliografia_complementar = models.TextField(db_column='Bibliografia_Complementar')  # Field name made lowercase. This field type is a guess.
 
-    
+    def __str__(self):
+        return self.nome
 
 class Gradecurricular(models.Model):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
@@ -78,7 +82,8 @@ class Matricula(models.Model):
     semestre_ofertado = models.CharField(db_column='Semestre_Ofertado', max_length=1)  # Field name made lowercase.
     id_turma = models.CharField(db_column='id_Turma', unique=True, max_length=1)  # Field name made lowercase.
 
-
+    def __str__(self):
+        return self.nome_disciplina
 
 class Periodo(models.Model):
     sigla_curso = models.CharField(db_column='Sigla_Curso', max_length=5)  # Field name made lowercase.
@@ -102,6 +107,8 @@ class Professor(models.Model):
     email = models.CharField(db_column='Email', max_length=80)  # Field name made lowercase.
     celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
 
+    def __str__(self):
+        return self.apelido
 
 class Questoes(models.Model):
     nome_discplina = models.CharField(db_column='Nome_Discplina', max_length=240)  # Field name made lowercase.
