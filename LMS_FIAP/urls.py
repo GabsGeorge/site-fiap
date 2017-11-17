@@ -22,6 +22,8 @@ from core.views import Cursos
 from core.views import Disciplina
 from core.views import detalhe_de_cursos
 from core.views import questionario
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -34,3 +36,8 @@ urlpatterns = [
     url(r'^detalhe_de_cursos', detalhe_de_cursos),
     url(r'^questionario', questionario)
  ]
+
+ 
+# verifica se o django está em modo de desenvolvimento (DEBUG), assim ele vai usar o diretório root dos arquivos para gerar uma view
+if settings.DEBUG: 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

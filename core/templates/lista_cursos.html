@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block conteudo %}
 		
 		<!--Inicio_Corpo-->	
@@ -20,65 +21,24 @@
 			<li>
 				<article class="lista_cursos01">
 					<a href="detalhe_de_cursos.html">
-						<img src="/static/img/adm.jpg"> 
-						<strong class="txt_cursos">{{curso.nome}}</strong>
-					</a>
+						{% if curso.imagem %}
+							<img src="{{curso.imagem.url}}" alt="{{curso.nome}}"> 
+								<strong class="txt_cursos">{{curso.nome}}</strong>
+						{%else%}
+							<img src="{% static 'img/sem-imagem.png' %}" alt="{{ course.name }}" />
+								<strong class="txt_cursos">{{curso.nome}}</strong>
+           				{% endif %} 	
+					</a>	
+
 				</article>
+
+			
+
+							
 			</li>
+						
 			{%endfor%}			
 					
-					
-			<!--	<article class="lista_cursos02">
-					<a href="detalhe_de_cursos.html">
-						<img src="/static/img/ads.jpg">
-							<strong class="txt_cursos">Analise e Desenvolvimento</strong>
-					</a>	
-				</article>
-
-				<article class="lista_cursos03">
-					<a href="detalhe_de_cursos.html">
-						<img src="/static/img/bd.jpg">
-							<strong class="txt_cursos">Banco de dados</strong>
-					</a>	
-				</article>
-				
-				<article class="lista_cursos04">
-				<a href="detalhe_de_cursos.html">
-					<img src="/static/img/gpg.jpg">
-						<strong class="txt_cursos">Graduação em Gestão da</br> Tecnologia</strong>
-					</a>	
-				</article>
-			
-			Conteudo_Cursos02
-
-				<article class="lista_cursos05"><a href="detalhe_de_cursos.html">
-						<img src="/static/img/gti.jpg">
-						 <strong class="txt_cursos">Gestão de tecnologia da</br>  informação</strong>
-					</a>	
-				</article>
-				
-				<article class="lista_cursos06"><a href="detalhe_de_cursos.html">
-						<img src="/static/img/jgs.jpg">
-							<strong class="txt_cursos">Jogos digitais</strong>
-					</a>	
-				</article>
-
-				<article class="lista_cursos07"><a href="detalhe_de_cursos.html">
-					<img src="/static/img/graduacao-em-redes-de-computadores.jpg">
-						<strong class="txt_cursos">Redes</strong>
-					</a>	
-				</article>
-				
-				<article class="lista_cursos08"><a href="detalhe_de_cursos.html">
-						<img src="/static/img/multimidia.jpg">
-							<strong class="txt_cursos">Graduação em produção<br/> multimídia</strong>
-						</a>	
-				</article>
-
-				<a class="cadastre_curso" href="cadastro_curso.html">
-						<strong class="txt_cadastro_curso">Cadastre um novo curso</strong>
-				</a>	
-			-->
 		</section> 
 		
 		<!--Fim_Corpo-->

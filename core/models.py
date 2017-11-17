@@ -22,13 +22,33 @@ class Disciplina(models.Model):
     def __str__(self):
         return self.nome
 
+class CourseManager(models.Manager):
+
+    def search(self, query):
+        return self.get_queryset().filter(
+            models.Q(name__icontains=query) | \
+            models.Q(description__icontains=query)
+        )
 
 class Curso(models.Model):
-    sigla = models.CharField(db_column='Sigla', unique=True, max_length=5)  # Field name made lowercase.
-    nome = models.CharField(db_column='Nome', unique=True, max_length=50)  # Field name made lowercase.
+    sigla = models.CharField("Sigla do curso",db_column='Sigla', unique=True, max_length=5)  # Field name made lowercase.
+    nome = models.CharField("Nome", db_column='Nome', unique=True, max_length=50)  # Field name made lowercase.
+    slug = models.SlugField('Link')
+    imagem = models.ImageField("Imagem do curso",upload_to='media', null=True, blank=True)
 
     def __str__(self):
         return self.nome
+
+    objects = CourseManager()    
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('cursos:details', (), {'slug': self.slug})
+
+    class Meta:
+        verbose_name = 'Curso'
+        verbose_name_plural = 'Cursos'
+        ordering = ['nome']     
 
 
 class Aluno(models.Model):
@@ -109,9 +129,9 @@ class Turma(models.Model):
 
 class Cursoturma(models.Model):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
-    nome_disciplina = models.ForeignKey('Disciplina', models.DO_NOTHING, db_column='Nome_Disciplina')  # Field name made lowercase.
+    nome_disciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='Nome_Disciplina')  # Field name made lowercase.
     ano_ofertado = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, related_name='Ano_Ofertado_Curso_Turma')  # Field name made lowercase.
-    semestre_ofertado = models.ForeignKey('Disciplinaofertada', models.DO_NOTHING, db_column='Semestre_Ofertado')  # Field name made lowercase.
+    semestre_ofertado = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='Semestre_Ofertado')  # Field name made lowercase.
     id_turma = models.ForeignKey('Turma', models.DO_NOTHING, db_column='Id_Turma')  # Field name made lowercase.
 
     class Meta:
