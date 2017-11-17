@@ -86,15 +86,16 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE' : 'sql_server.pyodbc',
-#         'NAME' : 'LMS-FINAL',
-#         'USER' : 'usuario1',
-#         'PASSWORD' : '123@admin',
-#         'HOST' : 'lmsfinal.database.windows.net'
-#     }
-# }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE' : 'sql_server.pyodbc',
+#        'NAME' : 'LMS-FINAL',
+#        'USER' : 'usuario1',
+#        'PASSWORD' : '123@admin',
+#        'HOST' : 'lmsfinal.database.windows.net'
+#    }
+#}
 
 
 
@@ -134,6 +135,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+
 
 STATIC_URL = '/static/'
 #MEDIA_URL = '/media/'
