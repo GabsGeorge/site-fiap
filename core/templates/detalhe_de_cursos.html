@@ -1,50 +1,39 @@
 {% extends 'base.html' %}
 {% block conteudo %}
+		
 		<!--corpo_inicio-->	
+		
 		<section class="corpo"> 
-				<article class="banner_si">
-		    		<span class="texto_banner_si">
-							<h1>Sistema de informação</br></h1>
-					</span>		
-				</article>		
-		    	
+			<figure class="imagemtopodisciplinas2">
+				<h1 class="titulodisciplinas">{{curso}}</h1>
+				<img class="enead" src="/static/img/enead.png" height="65" width="60" alt="enead_3_lugar">
+			</figure>	 	
 				<article class="txt_sobre_curso">
-				
 					<h1>SOBRE O CURSO</h1></br>
-					
-					<p>Este curso visa formar empreendedores, profissionais e pesquisadores focados na construção,
-					manutenção e evolução dos sistemas computacionais de apoio às organizações. </p>
-					</br>
-					<p>O perfil empreendedor é alcançado fazendo com que os alunos possam criar suas próprias
-					startups e produtos inovadores durante os quatro semestres finais do curso. </p>
-					</br>
-					<p>O perfil profissional é alcançado desenvolvendo no aluno a capacidade de entender e analisar 
-					problemas reais e a desenvolver soluções pragmáticas com o uso de tecnologias de melhor custo benefício. </p>
-					</br>
-						
+						{{curso.sobre }}
 
 				</article>	
 				
-				
-				<form class="contato" action="#" method="post">>
-					<div class="container">
+				<form class="contato" action="#" method="post">
+					<div class="formulario">
 						<div class="head">
 							<h2>Fale conosco</h2>
 						</div>
+
 						<input type="text" name="name" placeholder="Nome" /><br />
 						<input  type="email" name="email" placeholder="Email" /><br />
+						<input  type="email" name="text" placeholder="Assunto" /><br />
 						<textarea type="text" name="mensagem" placeholder="Mensagem"></textarea><br />
 						<div class="message"></div>
 						<button id="enviar" type="submit">Enviar</button>
 					</div>
 				</form>	
 				
-				<div class="btn_consulte_grade"> <a href="disciplinas.html">
-					<button id="btn_consulte" type="submit">Consulte nossa Grade</button></a>
-				</div>
+				<a class="btn_consulte_grade" href="disciplinas.html"> 
+					  Consulte nossa Grade
+				</a>
 
-		
+			</section>	
 		<!--corpo_fim-->
 		
-		</section> 
-{%endblock%}	
+		{%endblock%}

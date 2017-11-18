@@ -7,6 +7,28 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
+class Curso(models.Model):
+    sigla = models.CharField("Sigla do curso",db_column='Sigla', unique=True, max_length=5)  # Field name made lowercase.
+    nome = models.CharField("Nome", db_column='Nome', unique=True, max_length=50)  # Field name made lowercase.
+    slug = models.SlugField('Link')
+    imagem = models.ImageField("Imagem do curso",upload_to='media', null=True, blank=True)
+    
+    sobre = models.TextField('Sobre o Curso', blank=True)
+    ativo = models.BooleanField("Ativo?",default=True)
+
+    def __str__(self):
+        return self.nome
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('detalhe_de_cursos.html', (), {'slug': self.slug})
+
+    class Meta:
+        verbose_name = 'Curso'
+        verbose_name_plural = 'Cursos'
+        ordering = ['nome']     
+
 class Disciplina(models.Model):
     nome = models.CharField(db_column='Nome', unique=True, max_length=240)  # Field name made lowercase.
     cargahoraria = models.SmallIntegerField(db_column='CargaHoraria')  # Field name made lowercase.
@@ -21,35 +43,6 @@ class Disciplina(models.Model):
 
     def __str__(self):
         return self.nome
-
-class CourseManager(models.Manager):
-
-    def search(self, query):
-        return self.get_queryset().filter(
-            models.Q(name__icontains=query) | \
-            models.Q(description__icontains=query)
-        )
-
-class Curso(models.Model):
-    sigla = models.CharField("Sigla do curso",db_column='Sigla', unique=True, max_length=5)  # Field name made lowercase.
-    nome = models.CharField("Nome", db_column='Nome', unique=True, max_length=50)  # Field name made lowercase.
-    slug = models.SlugField('Link')
-    imagem = models.ImageField("Imagem do curso",upload_to='media', null=True, blank=True)
-
-    def __str__(self):
-        return self.nome
-
-    objects = CourseManager()    
-
-    @models.permalink
-    def get_absolute_url(self):
-        return ('cursos:details', (), {'slug': self.slug})
-
-    class Meta:
-        verbose_name = 'Curso'
-        verbose_name_plural = 'Cursos'
-        ordering = ['nome']     
-
 
 class Aluno(models.Model):
     ra_aluno = models.IntegerField(db_column='RA_Aluno', unique=True)  # Field name made lowercase.

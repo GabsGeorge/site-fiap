@@ -33,7 +33,7 @@ urlpatterns = [
 	url(r'^login', login),
     url(r'^lista_cursos', Cursos),
     url(r'^Disciplina', Disciplina),
-    url(r'^detalhe_de_cursos', detalhe_de_cursos),
+    url(r'^(?P<slug>[\w_-]+)/$', detalhe_de_cursos),
     url(r'^questionario', questionario)
  ]
 

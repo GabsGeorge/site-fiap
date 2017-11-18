@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404 
 from core.models import Curso
 from core.models import Disciplina
 
@@ -23,6 +23,13 @@ def Cursos(request):
 	}
 	return render(request,"lista_cursos.html", contexto)
 
+def detalhe_de_cursos (request, slug):
+    context = {
+        'curso': get_object_or_404(Curso, slug=slug) #verifica se a url existe, caso nao exista ele retorna erro 404
+    }
+    template_name = 'detalhe_de_cursos.html'
+    return render(request, template_name, context)
+
 
 def Disciplina(request):
 	contexto = {
@@ -30,10 +37,6 @@ def Disciplina(request):
 	}
 
 	return render(request, "disciplinas.html")
-
-def detalhe_de_cursos(request):
-	return render(request, "detalhe_de_cursos.html")
-
 
 def questionario(request):
 	return render(request, "questionario.html")

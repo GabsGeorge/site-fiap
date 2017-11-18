@@ -20,8 +20,8 @@
 			{%for curso in cursos%}		
 			<li>
 				<article class="lista_cursos01">
-					<a href="detalhe_de_cursos.html">
-						{% if curso.imagem %}
+					<a href="{{curso.slug}}">
+						{% if curso.imagem and curso.ativo %}
 							<img src="{{curso.imagem.url}}" alt="{{curso.nome}}"> 
 								<strong class="txt_cursos">{{curso.nome}}</strong>
 						{%else%}
@@ -32,8 +32,8 @@
 
 				</article>
 
-			
-
+				{% empty %}
+				<h1>Nenhum curso cadastrado</h1>
 							
 			</li>
 						
