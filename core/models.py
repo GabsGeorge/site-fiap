@@ -6,7 +6,23 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+class UsuarioManager(BaseUserManager):
+    def _criar_usuario(self, ra, password, **campos):
+        if not ra:
+            raise ValueError('RA deve ser declarado!')
+        user = self.model(ra=ra, **campos)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+    
+    def create_user(self, ra, password=None, **campos):
+        return self._criar_usuario(ra,password,**campos)
+
+    def create_superuser(self, ra, password=None, **campos):
+        campos.setdefault('perfil','Coordenador')
+        return self._criar_usuario(ra,password,**campos)
 
 class Curso(models.Model):
     sigla = models.CharField("Sigla do curso",db_column='Sigla', unique=True, max_length=5)  # Field name made lowercase.
@@ -44,15 +60,49 @@ class Disciplina(models.Model):
     def __str__(self):
         return self.nome
 
-class Aluno(models.Model):
-    ra_aluno = models.IntegerField(db_column='RA_Aluno', unique=True)  # Field name made lowercase.
-    nome = models.CharField(db_column='Nome', max_length=120)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=80)  # Field name made lowercase.
+    
+class Usuario(AbstractBaseUser):
+    ra = models.IntegerField(db_column='RA', unique=True)
+    password = models.CharField(db_column='Senha',max_length=200)
+    nome = models.CharField(db_column='Nome',max_length=100)
+    email = models.EmailField(db_column='E-mail',max_length=50)
+
+    perfil = models.CharField(db_column='Perfil',max_length=1)
+    ativo = models.BooleanField(db_column='Ativo',default=True)
+    
+    USERNAME_FIELD = 'ra'
+    REQUIRED_FIELDS = ['nome','email']
+    objects = UsuarioManager()
+
+    def get_full_name(self):
+        return self.nome
+
+    def get_short_name(self):
+        return self.nome
+
+    def __str__(self):
+        return self.nome
+
+    @property
+    def is_staff(self):
+        return self.perfil == "Coordenador"
+
+    def has_module_perms(self, package_name):
+        return True
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_perms(self, perm_list, obj=None):
+        return True
+
+class Aluno(Usuario):
     celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
 
     def __str__(self):
         return self.nome
+
 
 class Gradecurricular(models.Model):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
