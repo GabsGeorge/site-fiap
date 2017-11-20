@@ -20,8 +20,8 @@ from core.views import index
 from core.views import noticia
 from core.views import Cursos
 from core.views import Disciplina
-from core.views import Aluno
-from core.views import Professor
+from core.views import aluno
+from core.views import professor
 #from core.views import detalhe_de_cursos
 from core.views import questionario
 from django.conf.urls.static import static
@@ -29,13 +29,13 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index', index),
+    url(r'^index', index, name="index"),
     url(r'^$', index),
 	url(r'^noticia', noticia),
 	url(r'^login', login, { "template_name":"login.html" },name="entrar"),
     url(r'^logout',logout,name="sair"),
-    url(r'^aluno', Aluno, name="aluno"),
-    url(r'^professor', Professor, name="professor"),
+    url(r'^aluno', aluno, name="aluno"),
+    url(r'^professor', professor, name="professor"),
     url(r'^lista_cursos', Cursos),
     url(r'^Disciplina', Disciplina),
     #url(r'^(?P<slug>[\w_-]+)/$', detalhe_de_cursos),

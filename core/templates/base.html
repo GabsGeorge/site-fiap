@@ -48,8 +48,10 @@
 				<div class="bt_login centralizar_elemento">
 						{% if user.is_authenticated %}
 							Olá {{ user }}
+							<align="left">
 							<a class="bt_login centralizar_elemento" href="{% url 'sair' %}">Sair</a>
 							<a class="bt_login centralizar_elemento" href="{% url 'aluno' %}">Aluno</a>
+							</a>
 						{% else %}
 							<a href="{% url 'entrar' %}">Entrar</a>
 						{% endif %}

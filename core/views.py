@@ -14,27 +14,22 @@ def index(request):
 def noticia(request):
 	return render(request, "noticias.html")
 
-
 def checa_aluno(usuario):
-    return usuario.perfil == "Aluno"
+	return usuario.perfil == "Aluno"
 
 def checa_professor(usuario):
-    return usuario.perfil == "Professor"
+	return usuario.perfil == "professor"
 
-@login_required(login_url="/login")
+@login_required(login_url="entrar")
 @user_passes_test(checa_aluno)
-def Aluno(request):
-    aluno = Aluno.objects.get(id=request.user.id)
-    print(aluno.curso)
-    contexto = {
-        "curso":aluno.curso
-    }
-    return render(request,"aluno.html", contexto)
+def aluno(request):
+	return render(request, "aluno.html")
 
-@login_required(login_url="/login")
+@login_required(login_url="entrar")
 @user_passes_test(checa_professor)
-def Professor(request):
-    return render(request,"professor.html")
+def professor(request):
+	return render(request, "professor.html")
+
 
 
 
