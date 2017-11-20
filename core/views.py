@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404 
+from django.contrib.auth.decorators import login_required, user_passes_test
 from core.models import Curso
 from core.models import Disciplina
+from core.models import Aluno
 
 #Aqui estão as paginas views do template
 
@@ -13,8 +15,27 @@ def noticia(request):
 	return render(request, "noticias.html")
 
 
-def login(request):
-	return render(request, "login.html")
+def checa_aluno(usuario):
+    return usuario.perfil == "Aluno"
+
+def checa_professor(usuario):
+    return usuario.perfil == "Professor"
+
+@login_required(login_url="/login")
+@user_passes_test(checa_aluno)
+def Aluno(request):
+    aluno = Aluno.objects.get(id=request.user.id)
+    print(aluno.curso)
+    contexto = {
+        "curso":aluno.curso
+    }
+    return render(request,"aluno.html", contexto)
+
+@login_required(login_url="/login")
+@user_passes_test(checa_professor)
+def Professor(request):
+    return render(request,"professor.html")
+
 
 
 def Cursos(request):
@@ -23,12 +44,12 @@ def Cursos(request):
 	}
 	return render(request,"lista_cursos.html", contexto)
 
-def detalhe_de_cursos (request, slug):
-    context = {
-        'curso': get_object_or_404(Curso, slug=slug) #verifica se a url existe, caso nao exista ele retorna erro 404
-    }
-    template_name = 'detalhe_de_cursos.html'
-    return render(request, template_name, context)
+#def detalhe_de_cursos (request, slug):
+ #   context = {
+ #       'curso': get_object_or_404(Curso, slug=slug) #verifica se a url existe, caso nao exista ele retorna erro 404
+ #   }
+ #   template_name = 'detalhe_de_cursos.html'
+ #   return render(request, template_name, context)
 
 
 def Disciplina(request):

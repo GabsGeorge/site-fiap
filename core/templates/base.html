@@ -45,7 +45,15 @@
 						<li><a href="questionario.html">EAD</hr></a></li>
 					</ul>
 				</nav>	
-				<a class="bt_login centralizar_elemento" href="login.html">LOGIN</a>	
+				<div class="bt_login centralizar_elemento">
+						{% if user.is_authenticated %}
+							Olá {{ user }}
+							<a class="bt_login centralizar_elemento" href="{% url 'sair' %}">Sair</a>
+							<a class="bt_login centralizar_elemento" href="{% url 'aluno' %}">Aluno</a>
+						{% else %}
+							<a href="{% url 'entrar' %}">Entrar</a>
+						{% endif %}
+					</div>
 			</header>
 			<div class="margem_sup"></div>	<!--Margem para topo fixo-->
 		

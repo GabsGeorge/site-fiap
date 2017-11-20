@@ -141,6 +141,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'core.usuario'
+LOGIN_REDIRECT_URL = 'index.html'
 #MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 try:

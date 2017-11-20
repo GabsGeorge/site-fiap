@@ -1,28 +1,9 @@
 {% extends 'base.html' %}
-{% block conteudo %}	
 
-	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
-		
-		<!--Inicio_Corpo-->	
-		<section>
-
-			<div class="login-page" action="#" method="post">
-				<div class="form">
-					<form class="login-form">
-					<p class="texto">Login</p></br>
-						<input type="text" placeholder="R.A"/> <!-- input sem name -->
-						<input type="password" placeholder="Senha"/> <!-- input sem name -->
-						<!-- Cadê o lembre-se de mim? -->
-						<button>login</button>
-						<p class="senha_mensagem">Nao se registrou? <a href="cadastro_usuario.html">Crie sua conta</a></p>
-						<p class="senha_mensagem">Esqueceu sua senha ? <a href="esqueci_senha.html">Clique aqui!</a></p> 
-						
-					</form>
-				</div>
-			</div>
-			
-
-		</section> 
-		<!--Fim_Corpo-->
-{% endblock %}					
-
+{% block conteudo %}
+    <form action="" method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Entrar"/>
+    </form>
+{% endblock %}
