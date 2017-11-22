@@ -6,7 +6,6 @@
 		<meta charset="UTF-8">
 		<meta name="author" content="João Martins-1510229">
 		<meta name="author" content="Lucca Prazeres-1700726">
-		<meta name="author" content="Hugo Assis-1411272">
 		<meta name="author" content="Fillipe Borges-1700135">
 		<meta name="author" content="Gabriel George-1700824">
 		<meta name="author" content="Alisson Ferrrari-1700784">
@@ -45,15 +44,21 @@
 						<li><a href="questionario.html">EAD</hr></a></li>
 					</ul>
 				</nav>	
-				<div class="bt_login centralizar_elemento">
-						{% if user.is_authenticated %}
-							Olá {{ user }}
-							<align="left">
-							<a class="bt_login centralizar_elemento" href="{% url 'sair' %}">Sair</a>
-							<a class="bt_login centralizar_elemento" href="{% url 'aluno' %}">Aluno</a>
-							</a>
+				{% if user.is_authenticated %}
+				
+						<nav class="page-menu-aluno centralizar_elemento">
+							<ul>
+								<li><a class="page-menu" href="{% url 'aluno' %}">PAGINA DO ALUNO</a></li>
+								<li><a class="page-menu" href="{% url 'sair' %}">SAIR</a></li>
+							</ul>	
+						</nav>
+				
+				<div class="bt_login centralizar_elemento">									
+						<a class="bt_login"> Olá {{ user }}, seja bem vindo</a>
 						{% else %}
-							<a href="{% url 'entrar' %}">Entrar</a>
+							<nav>
+								<a class = "bt_login centralizar_elemento" href="{% url 'entrar' %}">Entrar</a>
+							</nav>
 						{% endif %}
 					</div>
 			</header>

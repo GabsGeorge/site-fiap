@@ -22,7 +22,7 @@ from core.views import Cursos
 from core.views import Disciplina
 from core.views import aluno
 from core.views import professor
-#from core.views import detalhe_de_cursos
+from core.views import detalhe_de_cursos
 from core.views import questionario
 from django.conf.urls.static import static
 from django.conf import settings
@@ -38,7 +38,7 @@ urlpatterns = [
     url(r'^professor', professor, name="professor"),
     url(r'^lista_cursos', Cursos),
     url(r'^Disciplina', Disciplina),
-    #url(r'^(?P<slug>[\w_-]+)/$', detalhe_de_cursos),
+    url(r'^(?P<slug>[\w_-]+)/$', detalhe_de_cursos),
     url(r'^questionario', questionario)
  ]
 

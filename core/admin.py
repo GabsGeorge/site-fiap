@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django import forms
+
 # importa as classes do models
 from core.models import Curso
 from core.models import Aluno

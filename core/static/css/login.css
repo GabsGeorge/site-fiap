@@ -1,28 +1,31 @@
 .login-page {
-  width: 360px;
+  width: 460px;
   padding: 8% 0 0;
   margin: auto;
 }
 
 .texto {
     padding: 10px;
-    border-bottom: solid 1px #cf1351;    
+    border-bottom: solid 1px #cf1351!important;    
 }
+
+
 
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: #000000c7;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  color: #000 !important;
 }
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background: #fff;
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -30,11 +33,11 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+#btn_entrar {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #cf1351;
+  background: #cf1351 !important;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -54,8 +57,9 @@
 }
 
 .senha_mensagem a {
-  color: #000;
+  color: #cf1351 ;
   text-decoration: none;
+  font-size: 12px;
 }
 
 .container {

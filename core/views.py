@@ -39,12 +39,12 @@ def Cursos(request):
 	}
 	return render(request,"lista_cursos.html", contexto)
 
-#def detalhe_de_cursos (request, slug):
- #   context = {
- #       'curso': get_object_or_404(Curso, slug=slug) #verifica se a url existe, caso nao exista ele retorna erro 404
- #   }
- #   template_name = 'detalhe_de_cursos.html'
- #   return render(request, template_name, context)
+def detalhe_de_cursos (request, slug):
+    context = {
+        'curso': get_object_or_404(Curso, slug=slug) #verifica se a url existe, caso nao exista ele retorna erro 404
+    }
+    template_name = 'detalhe_de_cursos.html'
+    return render(request, template_name, context)
 
 
 def Disciplina(request):

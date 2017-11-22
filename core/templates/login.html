@@ -1,9 +1,27 @@
 {% extends 'base.html' %}
+{% block conteudo %}	
 
-{% block conteudo %}
-    <form action="" method="POST">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Entrar"/>
-    </form>
-{% endblock %}
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+		
+		<!--Inicio_Corpo-->	
+		<section>
+
+			<div class="login-page">
+				<div class="form">
+					<form class="login-form" action="" method="POST">	
+						<p class="texto">Login</p></br>
+        						{{ form.as_p}}
+        						{% csrf_token %}
+        					<input type="submit" name="entrar" id="btn_entrar" value="Entrar"/>
+
+						<p class="senha_mensagem">Nao se registrou? <a href="cadastro_usuario.html">Crie sua conta</a></p>
+						<p class="senha_mensagem">Esqueceu sua senha ? <a href="esqueci_senha.html">Clique aqui!</a></p> 
+						
+					</form>
+				</div>
+			</div>
+			
+
+		</section> 
+		<!--Fim_Corpo-->
+{% endblock %}					

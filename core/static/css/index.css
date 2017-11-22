@@ -53,7 +53,7 @@ color: #db1858;
 
 .page-header {
    	display: grid;
-    grid-template-columns: 15% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 80px;
     background-color: #000;
     position: fixed;
@@ -67,10 +67,60 @@ color: #db1858;
     grid-column:1;
 }
 
+
+
+.page-menu-aluno {
+    grid-row: 1;
+    grid-column:3;
+    font-weight:10;
+    position: relative;
+}
+
+.page-menu-aluno ul{
+	display: flex;
+	flex-direction: row;
+	list-style: none;	
+}
+
+.page-menu-aluno li{
+	flex:auto;
+	padding-left: 10px;
+}
+
+
+.page-menu-aluno a{
+	text-decoration: none;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+	font: 14px Arial;
+	font-weight: bold;
+
+}
+
+.page-menu-aluno a:before{
+	content: '';
+	width:15px;
+	height: 3px;
+	background: #ed145d;
+	position: absolute;
+	top: 90%;
+	left: 10px;
+	transition: .5s;
+
+}
+
+.page-menu-aluno ul li:hover a:before{
+	width: 50%;
+
+}
+
+
 .page-menu {
     grid-row: 1;
     grid-column:2;
     font-weight:10;
+    position: relative;
 }
 
 .page-menu ul{
@@ -83,7 +133,6 @@ color: #db1858;
 .page-menu li{
 	flex:auto;
 	padding-left: 20px;
-
 }
 
 .page-menu a{
@@ -115,12 +164,16 @@ color: #db1858;
 
 .bt_login{
 	grid-row: 1;
-    grid-column:3;
+    grid-column-start: 4;
     text-align: center;
 	text-decoration: none;
 	list-style: none;
 	font: 14px Arial;	
 	color: #fff;
+	width: 500px;
+	position: relative;
+	right: 30px;
+
 }
 
 .bt_login:hover{
