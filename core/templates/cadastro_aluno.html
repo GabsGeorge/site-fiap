@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}	
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+		
+		<!--Inicio_Corpo-->	
+		<section>
+
+			<div class="login-page">
+				<div class="form">
+					<form class="login-form" action="" method="POST">	
+						{% csrf_token %}
+						<p class="texto">Cadastre-se</p></br>
+        				{{ form.non_field_errors }}
+			        	{% for campo in formulario %}	
+			        		{{ campo.label_tag }}
+			        		{{ campo }}
+			        		{{ campo.errors }}
+			        	{% endfor %}
+			        	
+        				<input type="submit" name="cadastrar" id="btn_entrar" value="cadastrar"/>
+						
+					</form>
+				</div>
+			</div>
+			
+
+		</section> 
+		<!--Fim_Corpo-->
+{% endblock %}					

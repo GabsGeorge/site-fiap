@@ -1,15 +1,22 @@
-from django.shortcuts import render, get_object_or_404 
+from django.shortcuts import render, get_object_or_404, redirect 
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import View, TemplateView, CreateView
+from django.conf import settings 
+from django.contrib.auth import get_user_model
+
 from core.models import Curso
 from core.models import Disciplina
 from core.models import Aluno
+
+User = get_user_model()
+
 
 #Aqui estão as paginas views do template
 
 
 def index(request):
 	return render(request, "index.html")
-
 
 def noticia(request):
 	return render(request, "noticias.html")
@@ -23,15 +30,15 @@ def checa_professor(usuario):
 @login_required(login_url="entrar")
 @user_passes_test(checa_aluno)
 def aluno(request):
-	return render(request, "aluno.html")
+	contexto = {
+		"cursos":Curso.objects.all()
+	}
+	return render(request, "aluno.html", contexto)
 
 @login_required(login_url="entrar")
 @user_passes_test(checa_professor)
 def professor(request):
 	return render(request, "professor.html")
-
-
-
 
 def Cursos(request):
 	contexto = {
@@ -51,8 +58,22 @@ def Disciplina(request):
 	contexto = {
 		"disciplinas":Disciplina.objects.all()
 	}
-
 	return render(request, "disciplinas.html")
+
 
 def questionario(request):
 	return render(request, "questionario.html")
+
+
+def registro(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect(settings.LOGIN_URL)
+	else:
+		form = UserCreationForm()
+	contexto = {
+		'formulario': UserCreationForm()
+	}
+	return render(request, 'cadastro_aluno.html', contexto)

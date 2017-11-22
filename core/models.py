@@ -146,15 +146,12 @@ class Disciplinaofertada(models.Model):
         db_table = 'DisciplinaOfertada'
                 
 
-class Professor(models.Model):
-    ra_professor = models.IntegerField(db_column='RA_Professor', unique=True)  # Field name made lowercase.
+class Professor(Usuario):
     apelido = models.CharField(db_column='Apelido', unique=True, max_length=30)  # Field name made lowercase.
-    nome = models.CharField(db_column='Nome', max_length=30)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=120)  # Field name made lowercase.
     celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
 
     def __str__(self):
-        return self.ra_Professor
+        return self.nome
 
 
 class Turma(models.Model):

@@ -9,10 +9,36 @@ from core.models import Disciplina
 from core.models import Professor
 from core.models import Matricula
 
+
+
 class CursoAdmin(admin.ModelAdmin):
     list_display = ["sigla", "nome", "ativo", "slug"] # lista  uma tabela de cursos com os dados listados
     search_fields = ["nome", "slug"] # realiza busca de cursos por nome
     prepopulated_fields = {'slug': ('nome',)} # Cria url amigavel para navegador
+
+
+class ProfessorForm(forms.ModelForm):
+
+    def save(self, commit=True):
+        professor = super(ProfessorForm,self).save(commit=False)
+        professor.set_password("123@mudar")
+        professor.perfil = 'professor'
+        if commit:
+            professor.save()
+        return professor
+
+    class Meta:
+        model = Professor
+        fields = ["ra", "nome", "email", "apelido"]
+
+
+class ProfessorAdmin(admin.ModelAdmin):
+    list_display = ["ra", "nome", "email", "apelido"] # lista  uma tabela de professores com os dados listados
+    search_fields = ["nome"] # realiza busca de professores por nome
+    add_form = ProfessorForm
+    filter_horizontal = []
+    ordering = ["ra"]
+
 
 class AlunoForm(forms.ModelForm):
 
@@ -51,5 +77,5 @@ class AlunoAdmin(UserAdmin):
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Disciplina)
-admin.site.register(Professor)
+admin.site.register(Professor, ProfessorAdmin)
 admin.site.register(Matricula)

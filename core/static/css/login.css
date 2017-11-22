@@ -9,19 +9,17 @@
     border-bottom: solid 1px #cf1351!important;    
 }
 
-
-
 .form {
   position: relative;
   z-index: 1;
-  background: #000000c7;
+  background: #848484c7;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  color: #000 !important;
 }
+
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -57,7 +55,6 @@
 }
 
 .senha_mensagem a {
-  color: #cf1351 ;
   text-decoration: none;
   font-size: 12px;
 }

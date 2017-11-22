@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-    <h1>Area do Aluno</h1>
 
-    Curso: {{ curso }}
+<link rel="stylesheet" type="text/css" href="/static/css/aluno.css"> 
+
+<div>   
+    <h1>Area do Aluno</h1>
+    {% for curso in cursos %}
+    	{{curso.nome}}
+    {% endfor %}
+</div>    	
 {% endblock %}
