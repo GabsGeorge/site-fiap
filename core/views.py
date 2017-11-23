@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 from core.models import Curso
 from core.models import Disciplina
 from core.models import Aluno
+from core.models import Professor
 
 User = get_user_model()
 

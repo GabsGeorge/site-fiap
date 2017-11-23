@@ -21,7 +21,7 @@ class ProfessorForm(forms.ModelForm):
 
     def save(self, commit=True):
         professor = super(ProfessorForm,self).save(commit=False)
-        professor.set_password("123@mudar")
+        professor.set_password("123@professor")
         professor.perfil = 'professor'
         if commit:
             professor.save()
@@ -29,15 +29,24 @@ class ProfessorForm(forms.ModelForm):
 
     class Meta:
         model = Professor
-        fields = ["ra", "nome", "email", "apelido"]
+        fields = ["ra", "apelido", "nome", "email", "celular"]
 
+class ProfessorAlterarForm(forms.ModelForm):
 
-class ProfessorAdmin(admin.ModelAdmin):
-    list_display = ["ra", "nome", "email", "apelido"] # lista  uma tabela de professores com os dados listados
-    search_fields = ["nome"] # realiza busca de professores por nome
+    class Meta:
+        model = Professor
+        fields = ["ra", "apelido", "nome", "email", "celular"]
+
+class ProfessorAdmin(UserAdmin):
     add_form = ProfessorForm
+    form = ProfessorAlterarForm
+    add_fieldsets = ((None, { "fields": ("ra", "apelido", "nome", "email", "celular")}),)
+    fieldsets = ((None, { "fields": ("nome", "email", "celular")}),)
+    list_display =["ra","nome","email"]
     filter_horizontal = []
     ordering = ["ra"]
+    list_filter = ["nome"]
+
 
 
 class AlunoForm(forms.ModelForm):
