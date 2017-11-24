@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect , HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View, TemplateView, CreateView, UpdateView
 from django.conf import settings 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
 from .forms import EditaContaForm
 
 from core.models import Curso
@@ -27,6 +28,9 @@ def checa_aluno(usuario):
 
 def checa_professor(usuario):
 	return usuario.perfil == "professor"
+
+def redirec(request):
+    return render(request,"redirec.html")
 
 @login_required(login_url="entrar")
 @user_passes_test(checa_aluno)
@@ -62,8 +66,25 @@ def Disciplina(request):
 	return render(request, "disciplinas.html")
 
 
+#import do modulo datetime para os (minutos/horas/dias), e  HttpResponseRedirect para redirecionar a pagina.
+#codigo abaixo separado para DIA
+'''
+if dia >= 29:
+   return HttpResponseRedirect('/redirec.html/')  
+'''
+
+#codigo principal para os minutos 
 def questionario(request):
-	return render(request, "questionario.html")
+	horaa=datetime.now()
+	hora=horaa.hour
+	minuto=horaa.minute
+	dia=horaa.day
+	fulltime=hora,":",minuto
+	if fulltime >= (999,':',999):
+		return HttpResponseRedirect('/redirec.html') 
+	else:
+		return render(request, "questionario.html")
+
 
 #funcao para alterar conta
 @login_required

@@ -26,6 +26,7 @@ from core.views import detalhe_de_cursos
 from core.views import questionario
 from core.views import editarConta
 from core.views import editarSenha
+from core.views import redirec
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -43,7 +44,9 @@ urlpatterns = [
     url(r'^(?P<slug>[\w_-]+)/$', detalhe_de_cursos),
     url(r'^questionario', questionario),
     url(r'^editar', editarConta),
-    url(r'^editar-senha', editarSenha)
+    url(r'^editar-senha', editarSenha),
+    url(r'^redirec', redirec)
+    
  ]
 
  
