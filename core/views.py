@@ -1,16 +1,16 @@
-from django.shortcuts import render, get_object_or_404, redirect 
+from django.shortcuts import render, redirect 
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import View, TemplateView, CreateView
+from django.views.generic import View, TemplateView, CreateView, UpdateView
 from django.conf import settings 
-from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import EditaContaForm
 
 from core.models import Curso
 from core.models import Disciplina
 from core.models import Aluno
 from core.models import Professor
 
-User = get_user_model()
 
 
 #Aqui estão as paginas views do template
@@ -32,7 +32,7 @@ def checa_professor(usuario):
 @user_passes_test(checa_aluno)
 def aluno(request):
 	contexto = {
-		"cursos":Curso.objects.all()
+		"aluno":Aluno.objects.all()
 	}
 	return render(request, "aluno.html", contexto)
 
@@ -65,16 +65,34 @@ def Disciplina(request):
 def questionario(request):
 	return render(request, "questionario.html")
 
+#funcao para alterar conta
+@login_required
+def editarConta(request):
+    template_name = 'editarConta.html'
+    contexto = {}
+    if request.method == 'POST':
+        form = EditaContaForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            form = EditaContaForm(instance=request.user)
+            context['success'] = True
+    else:
+        form = EditaContaForm(instance=request.user)
+    contexto['form'] = form
+    return render(request, template_name, contexto)
 
-def registro(request):
-	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect(settings.LOGIN_URL)
-	else:
-		form = UserCreationForm()
-	contexto = {
-		'formulario': UserCreationForm()
-	}
-	return render(request, 'cadastro_aluno.html', contexto)
+
+#funcao para alterar senha
+@login_required
+def editarSenha(request):
+    template_name = 'editarSenha.html'
+    context = {}
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            context['success'] = True
+    else:
+        form = PasswordChangeForm(user=request.user)
+    context['form'] = form
+    return render(request, template_name, context)    
