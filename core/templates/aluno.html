@@ -6,8 +6,10 @@
 
 <div>   
     <h1>Area do Aluno</h1>
-    {% for curso in cursos %}
-    	{{curso.nome}}
+    {% for curso in aluno %}
+    	{{curso.sigla_curso}}
     {% endfor %}
-</div>    	
+
+</div>
+
 {% endblock %}

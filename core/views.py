@@ -1,15 +1,17 @@
-from django.shortcuts import render, get_object_or_404, redirect 
+from django.shortcuts import render, redirect , HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import View, TemplateView, CreateView
+from django.views.generic import View, TemplateView, CreateView, UpdateView
 from django.conf import settings 
-from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
+from .forms import EditaContaForm
 
 from core.models import Curso
 from core.models import Disciplina
 from core.models import Aluno
+from core.models import Professor
 
-User = get_user_model()
 
 
 #Aqui estão as paginas views do template
@@ -27,11 +29,14 @@ def checa_aluno(usuario):
 def checa_professor(usuario):
 	return usuario.perfil == "professor"
 
+def redirec(request):
+    return render(request,"redirec.html")
+
 @login_required(login_url="entrar")
 @user_passes_test(checa_aluno)
 def aluno(request):
 	contexto = {
-		"cursos":Curso.objects.all()
+		"aluno":Aluno.objects.all()
 	}
 	return render(request, "aluno.html", contexto)
 
@@ -61,32 +66,54 @@ def Disciplina(request):
 	return render(request, "disciplinas.html")
 
 
-def questionario(request):
-	# resquest.POST
-	# Tentei salvar no BD as respostas e não obtive sucesso.
-	# Resposta.objects.create (
-	# 	resposta1=request.POST.cleaned_data("resposta1"),
-	# 	resposta2=request.POST.cleaned_data("resposta2"),
-	# 	resposta3=request.POST.cleaned_data("resposta3"),
-	# 	alternativa_4=request.POST.cleaned_data("alternativa_4"),
-	# 	alternativa_5=request.POST.cleaned_data("alternativa_5"),
-	# 	alternativa_6=request.POST.cleaned_data("alternativa_6"),
-	# 	alternativa_7=request.POST.cleaned_data("alternativa_7"),
-	# 	alternativa_8=request.POST.cleaned_data("alternativa_8"),
-	# 	alternativa_9=request.POST.cleaned_data("alternativa_9"),
-	# 	alternativa_10=request.POST.cleaned_data("alternativa_10")
-	# )
-	return render(request, "questionario.html")
+#import do modulo datetime para os (minutos/horas/dias), e  HttpResponseRedirect para redirecionar a pagina.
+#codigo abaixo separado para DIA
+'''
+if dia >= 29:
+   return HttpResponseRedirect('/redirec.html/')  
+'''
 
-def registro(request):
-	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect(settings.LOGIN_URL)
+#codigo principal para os minutos 
+def questionario(request):
+	horaa=datetime.now()
+	hora=horaa.hour
+	minuto=horaa.minute
+	dia=horaa.day
+	fulltime=hora,":",minuto
+	if fulltime >= (999,':',999):
+		return HttpResponseRedirect('/redirec.html') 
 	else:
-		form = UserCreationForm()
-	contexto = {
-		'formulario': UserCreationForm()
-	}
-	return render(request, 'cadastro_aluno.html', contexto)
+		return render(request, "questionario.html")
+
+
+#funcao para alterar conta
+@login_required
+def editarConta(request):
+    template_name = 'editarConta.html'
+    contexto = {}
+    if request.method == 'POST':
+        form = EditaContaForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            form = EditaContaForm(instance=request.user)
+            context['success'] = True
+    else:
+        form = EditaContaForm(instance=request.user)
+    contexto['form'] = form
+    return render(request, template_name, contexto)
+
+
+#funcao para alterar senha
+@login_required
+def editarSenha(request):
+    template_name = 'editarSenha.html'
+    context = {}
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            context['success'] = True
+    else:
+        form = PasswordChangeForm(user=request.user)
+    context['form'] = form
+    return render(request, template_name, context)    
