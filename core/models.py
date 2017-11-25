@@ -248,3 +248,11 @@ class Matricula(models.Model):
     class Meta:
         managed = False
         db_table = 'Matricula'
+
+class Questionario(models.Model):   
+
+    acertos = models.CharField(max_length=5)
+
+    class Meta:
+        managed = False
+        db_table = 'core_questionario'

@@ -62,8 +62,21 @@ def Disciplina(request):
 
 
 def questionario(request):
+	# resquest.POST
+	# Tentei salvar no BD as respostas e não obtive sucesso.
+	# Resposta.objects.create (
+	# 	resposta1=request.POST.cleaned_data("resposta1"),
+	# 	resposta2=request.POST.cleaned_data("resposta2"),
+	# 	resposta3=request.POST.cleaned_data("resposta3"),
+	# 	alternativa_4=request.POST.cleaned_data("alternativa_4"),
+	# 	alternativa_5=request.POST.cleaned_data("alternativa_5"),
+	# 	alternativa_6=request.POST.cleaned_data("alternativa_6"),
+	# 	alternativa_7=request.POST.cleaned_data("alternativa_7"),
+	# 	alternativa_8=request.POST.cleaned_data("alternativa_8"),
+	# 	alternativa_9=request.POST.cleaned_data("alternativa_9"),
+	# 	alternativa_10=request.POST.cleaned_data("alternativa_10")
+	# )
 	return render(request, "questionario.html")
-
 
 def registro(request):
 	if request.method == 'POST':

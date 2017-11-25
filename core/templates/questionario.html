@@ -9,21 +9,21 @@ Página possui arquivo JS-->
 
 <h1>QUESTIONÁRIO</h1>
 
-<form action="" method "POST" onchange="javascript:autoRefresh(9000);">
-    {% csrf_token %} 1.) Em um ambiente de programação, o entendimento do problema do usuário ajuda na contrução do produto ? Justifique sua Resposta.
+<form action="javascript:Enviar();" method "POST" onchange="javascript:autoRefresh(9000);">
+    {% csrf_token %} 1.) Em um ambiente de programação, o entendimento do problema do usuário ajuda na construção do produto ? Justifique sua Resposta.
     <br/>
     <br/>
-    <textarea name="resposta" class="textarea"></textarea>
+    <textarea name="resposta1" class="textarea" id="resposta1"></textarea>
     <br/>
     <br/> 2.) Explique com suas palavras, o que entende sobre o Python com o framework Django.
     <br/>
     <br/>
-    <textarea name="resposta" class="textarea"></textarea>
+    <textarea name="resposta2" class="textarea" id="resposta2"></textarea>
     <br/>
     <br/> 3.) Qual é o principal comando no python/django utilizado para subir o servidor ?
     <br/>
     <br/>
-    <textarea name="resposta" class="textarea"></textarea>
+    <textarea name="resposta3" class="textarea" id="resposta3"></textarea>
     <br/>
     <br/>
     <br/> 4.) A lei n.°12.965, de 23 de abril de 2014, originalmente denominada Marco Civil da internet, estabelece princípios,
@@ -42,7 +42,7 @@ Página possui arquivo JS-->
     <br/>    
     <input type="radio" class="input" name="alternativa_4" value="B">As asserções I e II são proposições verdadeiras, mais a II não e uma justificativa correta da I.
     <br/>    
-    <input type="radio" class="input" name="alternativa_4" value="C">A asserção I pé uma proposição verdadeira, e a II é uma proposição falsa.
+    <input type="radio" class="input" name="alternativa_4" id="correta_4" value="C">A asserção I pé uma proposição verdadeira, e a II é uma proposição falsa.
     <br/>    
     <input type="radio" class="input" name="alternativa_4" value="D">A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.
     <br/>    
@@ -62,7 +62,7 @@ Página possui arquivo JS-->
     <br/>
     <br/>
 
-    <input type="radio" class="input" name="alternativa_5" value="A">II, apenas.<br/><br/>
+    <input type="radio" class="input" name="alternativa_5" id="correta_5" value="A">II, apenas.<br/><br/>
     <input type="radio" class="input" name="alternativa_5" value="B">III, apenas.<br/><br/>
     <input type="radio" class="input" name="alternativa_5" value="C">I e II, apenas.<br/><br/>
     <input type="radio" class="input" name="alternativa_5" value="D">I e III, apenas.<br/><br/>
@@ -85,20 +85,20 @@ Página possui arquivo JS-->
     <input type="radio" class="input" name="alternativa_6" value="A">Restrições de domínio.<br/><br/>
     <input type="radio" class="input" name="alternativa_6" value="B">Restrições de unicidade.<br/><br/>
     <input type="radio" class="input" name="alternativa_6" value="C">Restrições de integridade referencial.<br/><br/>
-    <input type="radio" class="input" name="alternativa_6" value="D">Restrições de integridade entidade.<br/><br/>
+    <input type="radio" class="input" name="alternativa_6" id="correta_6" value="D">Restrições de integridade entidade.<br/><br/>
     <input type="radio" class="input" name="alternativa_6" value="E">Restrições de integridade semântica.<br/><br/><br/>
 
     7.) O que o Django é ?<br/><br/>
-    <input type="checkbox" class="input" name="alternativa_7" value="A">Programa.<br/><br/>
-    <input type="checkbox" class="input" name="alternativa_7" value="B">Framework.<br/><br/>
-    <input type="checkbox" class="input" name="alternativa_7" value="C">Banco de Dados.<br/><br/>
-    <input type="checkbox" class="input" name="alternativa_7" value="D">Extensão do Python.<br/><br/>
+    <input type="checkbox" class="input" name="alternativa_7" id="errado_7A" value="A">Programa.<br/><br/>
+    <input type="checkbox" class="input" name="alternativa_7" id="correta_7" value="B">Framework.<br/><br/>
+    <input type="checkbox" class="input" name="alternativa_7" id="errado_7B" value="C">Banco de Dados.<br/><br/>
+    <input type="checkbox" class="input" name="alternativa_7" id="errado_7C" value="D">Extensão do Python.<br/><br/>
 
     8.) CLI é um(a):<br/><br/>
-    <input class="input" type="checkbox" name="alternativa_8" value="A">Prompt de Comando.<br/><br/>
-    <input class="input" type="checkbox" name="alternativa_8" value="B">Textos para serem digitados no bloco de notas.<br/><br/>
-    <input class="input" type="checkbox" name="alternativa_8" value="C">Linha de comando.<br/><br/>
-    <input class="input" type="checkbox" name="alternativa_8" value="D">Extensão de comandos.<br/><br/><br/>
+    <input class="input" type="checkbox" name="alternativa_8" id="errado_8A" value="A">Prompt de Comando.<br/><br/>
+    <input class="input" type="checkbox" name="alternativa_8" id="errado_8B" value="B">Textos para serem digitados no bloco de notas.<br/><br/>
+    <input class="input" type="checkbox" name="alternativa_8" id="correta_8A" value="C">Linha de comando.<br/><br/>
+    <input class="input" type="checkbox" name="alternativa_8" id="correta_8B" value="D">Extensão de comandos.<br/><br/><br/>
 
     9.) A engenharia de software considera diversos aspectos para a garantia da qualidade. Os
     requisitos funcionais definem como um sistema deverá se comportar em relação as suas
@@ -107,7 +107,7 @@ Página possui arquivo JS-->
     São exemplos de requisitos não funcionais a serem considerados em um software:<br/><br/>
 
     <input class="input" type="radio" name="alternativa_9" value="A">Segurança, desempenho, estresse e sistema.<br/><br/>
-    <input class="input" type="radio" name="alternativa_9" value="B">Usabilidade, segurança, aceitação e confiabilidade.<br/><br/>
+    <input class="input" type="radio" name="alternativa_9" value="B" id="correta_9">Usabilidade, segurança, aceitação e confiabilidade.<br/><br/>
     <input class="input" type="radio" name="alternativa_9" value="C">Segurança, segurança, desempenho e confiabilidade.<br/><br/>
     <input class="input" type="radio" name="alternativa_9" value="D">Segurança, aceitação, testabilidade e confidencialidade.<br/><br/>
     <input class="input" type="radio" name="alternativa_9" value="E">Nenhuma das alternativas.<br/><br/>
@@ -129,11 +129,11 @@ Página possui arquivo JS-->
     resolvida sem que seja necessário recorrer a outro serviço DNS.
     IV. O protocolo DNS depende de um banco de dados distribuído.
     É Correto apenas o que se afirma em:<br/><br/>
-    <input class="input" type="radio" name="alternativa_10" value="A">I e II.<br/><br/>
-    <input class="input" type="radio" name="alternativa_10" value="B">I e III.<br/><br/>
-    <input class="input" type="radio" name="alternativa_10" value="C">II e IV.<br/><br/>
-    <input class="input" type="radio" name="alternativa_10" value="D">I, II e IV.<br/><br/>
-    <input class="input" type="radio" name="alternativa_10" value="E">I, III e IV.<br/><br/>
+    <input class="input" type="radio" name="alternativa_10"  value="A" id="correta_10">I e II.<br/><br/>
+    <input class="input" type="radio" name="alternativa_10"  value="B">I e III.<br/><br/>
+    <input class="input" type="radio" name="alternativa_10"  value="C">II e IV.<br/><br/>
+    <input class="input" type="radio" name="alternativa_10"  value="D">I, II e IV.<br/><br/>
+    <input class="input" type="radio" name="alternativa_10"  value="E">I, III e IV.<br/><br/>
 
     <input class="button" type="submit" value="Enviar" id="id_formulario" />
 </form>
