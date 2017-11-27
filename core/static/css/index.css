@@ -69,26 +69,26 @@ color: #db1858;
 
 
 
-.page-menu-aluno {
+.page-menu-logado {
     grid-row: 1;
     grid-column:3;
     font-weight:10;
     position: relative;
+    right:65px;
 }
 
-.page-menu-aluno ul{
+.page-menu-logado ul{
 	display: flex;
 	flex-direction: row;
 	list-style: none;	
 }
 
-.page-menu-aluno li{
+.page-menu-logado li{
 	flex:auto;
-	padding-left: 10px;
 }
 
 
-.page-menu-aluno a{
+.page-menu-logado a{
 	text-decoration: none;
 	color: #fff;
 	padding: 10px;
@@ -98,7 +98,7 @@ color: #db1858;
 
 }
 
-.page-menu-aluno a:before{
+.page-menu-logado a:before{
 	content: '';
 	width:15px;
 	height: 3px;
@@ -110,7 +110,7 @@ color: #db1858;
 
 }
 
-.page-menu-aluno ul li:hover a:before{
+.page-menu-logado ul li:hover a:before{
 	width: 50%;
 
 }

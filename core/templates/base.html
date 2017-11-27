@@ -30,19 +30,23 @@
 						<li><a href="index.html">HOME</a></li>
 						<li><a href="noticia.html">NOTÍCIAS</a></li>					
 						<li><a href="{% url 'lista-de-cursos' %}">CURSOS</hr></a></li>
-						<li><a href="questionario.html">EAD</hr></a></li>
 					</ul>
 				</nav>	
 				{% if user.is_authenticated %}
 				
-						<nav class="page-menu-aluno centralizar_elemento">
+						<nav class="page-menu-logado centralizar_elemento">
 							<ul>
-								{% if user.professor %}
+								{% if user.perfil == "professor" %}
 									<li><a class="page-menu" href="{% url 'professor' %}">ÁREA DO PROFESSOR</a></li>
-									{%else%}
-									<li><a class="page-menu" href="{% url 'aluno' %}">ÁREA DO ALUNO</a></li>
+								
+								{% elif user.perfil == "Aluno" %}
+									<li><a class="page-menu" href="{% url 'aluno' %}">ÁREA DO ALUNO</a></li>			
+
+								{% elif user.perfil == "Coordenador" %}
+									<li><a class="page-menu" href="{% url 'coordenador' %}">ÁREA DO COORDENADOR</a></li>
 								{%endif%}
-									
+
+										
 								<li><a class="page-menu" href="{% url 'sair' %}">SAIR</a></li>
 							</ul>	
 						</nav>

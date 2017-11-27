@@ -8,13 +8,61 @@ from core.models import Aluno
 from core.models import Disciplina
 from core.models import Professor
 from core.models import Matricula
+from core.models import Usuario
 from core.models import Cadastro_Boletim
+from core.models import Gradecurricular
+from core.models import Periodo
+from core.models import Periododisciplina
+from core.models import Turma
+
+class MatriculaAdmin(admin.ModelAdmin):
+    list_display = ["ra_aluno", "nome_disciplina", "ano_ofertado","semestre_ofertado", "id_turma"] # lista  uma tabela de cursos com os dados listados
+    search_fields = ["semestre_ofertado", "ano_ofertado"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["nome_disciplina"]
+    list_filter = ["nome_disciplina"]
 
 
+class TurmaAdmin(admin.ModelAdmin):
+    list_display = ["nome_disciplina", "ano_ofertado", "semestre_ofertado","ra_professor","turno", "id_turma"] # lista  uma tabela de cursos com os dados listados
+    search_fields = ["nome_disciplina", "ra_professor", "turno"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["nome_disciplina"]
+    list_filter = ["nome_disciplina"]
 
+
+class PeriododisciplinaAdmin(admin.ModelAdmin):
+    list_display = ["sigla_curso", "nome_disciplina", "ano_grade", "semestre_grade", "numero_periodo"] # lista  uma tabela de cursos com os dados listados
+    search_fields = ["sigla_curso", "ano_grade", "semestre_grade"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["nome_disciplina"]
+    list_filter = ["nome_disciplina"]
+
+
+class PeriodoAdmin(admin.ModelAdmin):
+    list_display = ["sigla_curso", "ano_grade", "semestre_grade", "numeroperiodo"] # lista  uma tabela de cursos com os dados listados
+    search_fields = ["sigla_curso", "ano_grade", "semestre_grade"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["sigla_curso"]
+    list_filter = ["sigla_curso"]
+
+class GradecurricularAdmin(admin.ModelAdmin):
+    list_display = ["sigla_curso", "ano", "semestre"] # lista  uma tabela de cursos com os dados listados
+    search_fields = ["sigla_curso", "ano"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["sigla_curso"]
+    list_filter = ["sigla_curso"]
 
 class BoletimAdmin(admin.ModelAdmin):
     list_display = ["nome_disciplina", "regular", "ra_aluno", "curso" ]
+
+
+class UsuariomAdmin(admin.ModelAdmin):
+    list_display = ["nome", "ra", "email", "perfil" ]
+    search_fields = ["nome", "ra", "perfil"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["ra"]
+    list_filter = ["perfil"]
 
 
 class CursoAdmin(admin.ModelAdmin):
@@ -93,5 +141,9 @@ admin.site.register(Curso, CursoAdmin)
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Disciplina)
 admin.site.register(Professor, ProfessorAdmin)
-admin.site.register(Matricula)
+admin.site.register(Matricula, MatriculaAdmin)
+admin.site.register(Usuario, UsuariomAdmin)
 admin.site.register(Cadastro_Boletim, BoletimAdmin)
+admin.site.register(Gradecurricular, GradecurricularAdmin)
+admin.site.register(Periodo, PeriodoAdmin)
+admin.site.register(Periododisciplina, PeriododisciplinaAdmin)

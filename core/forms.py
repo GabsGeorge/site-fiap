@@ -2,6 +2,7 @@ from django import forms
 
 from core.models import Curso
 from core.models import Aluno
+from core.models import Professor
 
 class CursoForm(forms.ModelForm):
 
@@ -22,7 +23,7 @@ class ContatoForm(forms.Form):
         "\nMensagem: "+self.cleaned_data["mensagem"])
 
 
-class EditaContaForm(forms.ModelForm):
+class EditaContaAlunoForm(forms.ModelForm):
 
     def clean_email(self):
     #Verifica se Email ja está cadastrado para poder editar    
@@ -34,4 +35,4 @@ class EditaContaForm(forms.ModelForm):
 
     class Meta:
         model = Aluno
-        fields = ('nome','email','celular','imagemAluno','ativo')
+        fields = ('nome','email','celular','imagemAluno')

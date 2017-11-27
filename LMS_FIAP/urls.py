@@ -22,6 +22,7 @@ from core.views import Cursos
 from core.views import Disciplina
 from core.views import aluno
 from core.views import professor
+from core.views import coordenador
 from core.views import detalhe_de_cursos
 from core.views import questionario
 from core.views import editarConta
@@ -35,15 +36,16 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index', index, name="index"),
     url(r'^$', index),
-	url(r'^noticia', noticia),
-	url(r'^login', login, { "template_name":"login.html" },name="entrar"),
+    url(r'^noticia', noticia),
+    url(r'^login', login, { "template_name":"login.html" },name="entrar"),
     url(r'^logout',logout,name="sair"),
     url(r'^aluno', aluno, name="aluno"),
     url(r'^professor', professor, name="professor"),
+    url(r'^coordenador', coordenador, name="coordenador"),
     url(r'^lista-de-cursos', Cursos , name="lista-de-cursos" ),
     url(r'^Disciplina', Disciplina),
     url(r'^(?P<slug>[\w_-]+)/$', detalhe_de_cursos),
-    url(r'^questionario', questionario),
+    url(r'^EAD', questionario, name="EAD"),
     url(r'^editar-conta', editarConta, name="editar-conta"),
     url(r'^editar-senha', editarSenha, name="editar-senha"),
     url(r'^boletim', Boletim),

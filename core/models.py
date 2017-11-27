@@ -66,7 +66,7 @@ class Usuario(AbstractBaseUser):
     password = models.CharField(db_column='Senha',max_length=200)
     nome = models.CharField(db_column='Nome',max_length=100)
     email = models.EmailField(db_column='Email',max_length=50)
-    celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
+    
 
     perfil = models.CharField(db_column='Perfil',max_length=50)
     ativo = models.BooleanField(db_column='Ativo',default=True)
@@ -74,6 +74,11 @@ class Usuario(AbstractBaseUser):
     USERNAME_FIELD = 'ra'
     REQUIRED_FIELDS = ['nome','email']
     objects = UsuarioManager()
+
+    class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
+        ordering = ['nome']     
 
     def get_full_name(self):
         return self.nome
@@ -100,24 +105,36 @@ class Usuario(AbstractBaseUser):
 class Aluno(Usuario):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
     imagemAluno = models.ImageField("Imagem do Aluno",upload_to='image', null=True, blank=True)
-
+    celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
+    
     def __str__(self):
         return str(self.ra)
 
 
 class Gradecurricular(models.Model):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
-    ano = models.SmallIntegerField(db_column='Ano', unique=True)  # Field name made lowercase.
-    semestre = models.CharField(db_column='Semestre', unique=True, max_length=1)  # Field name made lowercase.
+    ano = models.SmallIntegerField(db_column='Ano')  # Field name made lowercase.
+    semestre = models.CharField(db_column='Semestre', max_length=1)  # Field name made lowercase.
 
+    def __str__(self):
+        return str(self.ano)
+ 
 
+    class Meta:
+        verbose_name = 'Grade Curricular'
+        verbose_name_plural = 'Grades Curriculares'
+        ordering = ['sigla_curso'] 
 
 class Periodo(models.Model):
-    sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
-    ano_grade = models.ForeignKey(Gradecurricular, models.DO_NOTHING, related_name='Ano_Grade_Periodo')  # Field name made lowercase.
-    semestre_grade = models.ForeignKey(Gradecurricular, models.DO_NOTHING, db_column='Semestre_Grade')  # Field name made lowercase.
+    sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, related_name="Curso", db_column='Sigla_Curso')  # Field name made lowercase.
+    ano_grade = models.ForeignKey(Gradecurricular, models.DO_NOTHING, related_name="Ano")  # Field name made lowercase.
+    semestre_grade = models.IntegerField(db_column='Semestre_Grade')  # Field name made lowercase.
     numeroperiodo = models.SmallIntegerField(db_column='NumeroPeriodo', unique=True)  # Field name made lowercase.
 
+    class Meta:
+        verbose_name = 'Periodo'
+        verbose_name_plural = 'Periodos'
+        ordering = ['sigla_curso'] 
 
 
 class Periododisciplina(models.Model):
@@ -126,6 +143,11 @@ class Periododisciplina(models.Model):
     semestre_grade = models.ForeignKey(Gradecurricular, models.DO_NOTHING, db_column='Semestre_Grade')  # Field name made lowercase.
     numero_periodo = models.ForeignKey(Periodo, models.DO_NOTHING, db_column='Numero_Periodo')  # Field name made lowercase.
     nome_disciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='Nome_Disciplina')  # Field name made lowercase.
+
+    class Meta:
+        verbose_name = 'Periodo e Disciplina'
+        verbose_name_plural = 'Periodos e Disciplinas'
+        ordering = ['sigla_curso'] 
 
 
 class Disciplinaofertada(models.Model):
@@ -137,10 +159,15 @@ class Disciplinaofertada(models.Model):
 
 class Professor(Usuario):
     apelido = models.CharField("Apelido",db_column='Apelido', unique=True, max_length=30)  # Field name made lowercase.
-    
+    celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
+
+    class Meta:
+        verbose_name = 'Professor'
+        verbose_name_plural = 'Professores'
+        ordering = ['apelido']
 
     def __str__(self):
-        return self.nome
+        return str(self.ra)
 
 
 class Turma(models.Model):
@@ -207,13 +234,17 @@ class Arquivosrespostas(models.Model):
     arquivoresposta = models.CharField(db_column='ArquivoResposta', unique=True, max_length=500)  # Field name made lowercase.
 
 
-
 class Matricula(models.Model):
     ra_aluno = models.ForeignKey(Aluno, models.DO_NOTHING, db_column='RA_Aluno')  # Field name made lowercase.
     nome_disciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='Nome_Disciplina')  # Field name made lowercase.
     ano_ofertado = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, related_name='Ano_Ofertado_Matricula')  # Field name made lowercase.
     semestre_ofertado = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='Semestre_Ofertado')  # Field name made lowercase.
     id_turma = models.ForeignKey(Turma, models.DO_NOTHING, db_column='Id_Turma')  # Field name made lowercase.
+
+    class Meta:
+        verbose_name = 'Matricula'
+        verbose_name_plural = 'Matriculas'
+        ordering = ['ra_aluno'] 
 
     def __str__(self):
         return str(self.ra_aluno)
@@ -230,6 +261,10 @@ class Cadastro_Boletim(models.Model):
 
     def __str__(self):
         return str(self.ra_aluno)
+    class Meta:
+        verbose_name = 'Boletim'
+        verbose_name_plural = 'Boletins'
+        ordering = ['curso']     
 
 class Questionario(models.Model):   
 

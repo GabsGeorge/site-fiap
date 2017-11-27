@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect , HttpResponseRedirect
+from django.shortcuts import render, redirect , HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.views.generic import View, TemplateView, CreateView, UpdateView
 from django.conf import settings 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
-from .forms import EditaContaForm
+from .forms import EditaContaAlunoForm
 
 from core.models import Curso
 from core.models import Disciplina
@@ -17,6 +17,7 @@ from core.models import Matricula
 
 
 def index(request):
+
 	return render(request, "index.html")
 
 def noticia(request):
@@ -27,6 +28,9 @@ def checa_aluno(usuario):
 
 def checa_professor(usuario):
 	return usuario.perfil == "professor"
+
+def checa_coordenador(usuario):
+    return usuario.perfil == "Coordenador"    
 
 def redirec(request):
     return render(request,"redirec.html")
@@ -40,6 +44,11 @@ def aluno(request):
 @user_passes_test(checa_professor)
 def professor(request):
 	return render(request, "professor.html")
+
+@login_required(login_url="entrar")
+@user_passes_test(checa_coordenador)
+def coordenador(request):
+    return render(request, "coordenador.html")    
 
 def Cursos(request):
 	contexto = {
@@ -89,13 +98,13 @@ def editarConta(request):
     template_name = 'editarConta.html'
     contexto = {}
     if request.method == 'POST':
-        form = EditaContaForm(request.POST, instance=request.user)
+        form = EditaContaAlunoForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            form = EditaContaForm(instance=request.user)
+            form = EditaContaAlunoForm(instance=request.user)
             contexto['success'] = True
     else:
-        form = EditaContaForm(instance=request.user)
+        form = EditaContaAlunoForm(instance=request.user)
     contexto['form'] = form
     return render(request, template_name, contexto)
 
@@ -118,7 +127,6 @@ def editarSenha(request):
 
 def Boletim(request):
     contexto = {
-        'boletim': Cadastro_Boletim.objects.all()
-        
+        'boletim': Cadastro_Boletim.objects.all()        
     }
     return render(request,"boletim.html", contexto)

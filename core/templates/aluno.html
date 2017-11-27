@@ -3,7 +3,6 @@
 {% block conteudo %}
 
 <link rel="stylesheet" type="text/css" href="/static/css/aluno.css"> 
-<link rel="stylesheet" type="text/css" href="/static/css/boletim.css"> 
 <div class="container">
 	<nav class="navegacao">
 		<ul>
@@ -14,51 +13,10 @@
 			<h1>MINHA CONTA</h1>
 			<li><a href="{% url 'editar-conta' %}"> Alterar conta</a></li>
 			<li><a href="{% url 'editar-senha' %}">Alterar Senha </a></li>
+			<li><a href="{% url 'EAD' %}">EAD</hr></a></li>
 		</ul>
 
-	</nav>   
-
-<body>
-<div class="table-title">
-<h3>Notas</h3>
-</div>
-
-<table class="table-fill">
-<thead>
-<tr>
-<th class="text-left">Disciplina</th>
-<th class="text-left">Curso</th>
-<th class="text-left">Ativo</th>
-<th class="text-left">MB1</th>
-<th class="text-left">SUB1</th>
-<th class="text-left">MB2</th>
-<th class="text-left">SUB2</th>
-<th class="text-left">EX</th>
-<th class="text-left">MF</th>
-</tr>
-</thead>
-<tbody class="table-hover">
-{% for b in boletim %}
-<tr>
-<td class="text-left">{{b.nome_disciplina}}</td>
-<td class="text-left">{{b.curso}}</td>
-	{% if b.regular %}
-		<td class="text-left">Ativo</td>
-	{% else %}
-		<td class="text-left">Desativado</td>
-	{% endif %}
-<td class="text-left">{{b.MB1}}</td>
-<td class="text-left">{{b.SUB1}}</td>
-<td class="text-left">{{b.MB2}}</td>
-<td class="text-left">{{b.SUB2}}</td>
-<td class="text-left"></td>
-<td class="text-left"></td>
-</tr>
-{% endfor %}
-</tbody>
-
-</table>	
-</body>
-</div>
+	</nav> 
+</div>	  
 
 {% endblock %}
