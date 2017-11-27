@@ -91,10 +91,10 @@ WSGI_APPLICATION = 'LMS_FIAP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'sql_server.pyodbc',
-        'NAME' : 'LMS_Final_Faculdade',
-        'USER' : 'user',
-        'PASSWORD' : '123456',
-        'HOST' : 'DELL-PC'
+        'NAME' : 'LMS-FINAL',
+        'USER' : 'usuario1',
+        'PASSWORD' : '123@admin',
+        'HOST' : 'lmsfinal.database.windows.net'
     }
 }
 

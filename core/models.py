@@ -65,7 +65,7 @@ class Usuario(AbstractBaseUser):
     ra = models.IntegerField(db_column='RA', unique=True)
     password = models.CharField(db_column='Senha',max_length=200)
     nome = models.CharField(db_column='Nome',max_length=100)
-    email = models.EmailField(db_column='E-mail',max_length=50)
+    email = models.EmailField(db_column='Email',max_length=50)
     celular = models.CharField(db_column='Celular', max_length=11)  # Field name made lowercase.
 
     perfil = models.CharField(db_column='Perfil',max_length=50)
