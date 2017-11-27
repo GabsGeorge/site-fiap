@@ -29,7 +29,7 @@
 					<ul>
 						<li><a href="index.html">HOME</a></li>
 						<li><a href="noticia.html">NOTÍCIAS</a></li>					
-						<li><a href="lista_cursos.html">CURSOS</hr></a></li>
+						<li><a href="{% url 'lista-de-cursos' %}">CURSOS</hr></a></li>
 						<li><a href="questionario.html">EAD</hr></a></li>
 					</ul>
 				</nav>	
@@ -37,8 +37,12 @@
 				
 						<nav class="page-menu-aluno centralizar_elemento">
 							<ul>
-								<li><a class="page-menu" href="{% url 'aluno' %}">ÁREA DO ALUNO</a></li>
-								<li><a class="page-menu" href="{% url 'professor' %}">ÁREA DO PROFESSOR</a></li>
+								{% if user.professor %}
+									<li><a class="page-menu" href="{% url 'professor' %}">ÁREA DO PROFESSOR</a></li>
+									{%else%}
+									<li><a class="page-menu" href="{% url 'aluno' %}">ÁREA DO ALUNO</a></li>
+								{%endif%}
+									
 								<li><a class="page-menu" href="{% url 'sair' %}">SAIR</a></li>
 							</ul>	
 						</nav>

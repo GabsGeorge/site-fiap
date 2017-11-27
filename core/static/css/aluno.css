@@ -1,6 +1,41 @@
 
-div{
-	color: #fff;
-	text-align: center;
+
+.container{
 	height: 600px;
+}
+
+
+.navegacao h1{
+	border: solid 1px #fff;
+	padding: 7px;
+	min-width: 250px;
+	max-width: 250px;
+	background-color: #db1858;
+
+}
+
+.navegacao{
+	border:solid 1px #fff;
+	max-width: 265px;
+	min-width: 265px;
+	height: 240px;
+	color: #fff;
+	position: relative;
+	left: 5%;
+	top: 15%;
+}
+
+
+.navegacao a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.navegacao ul li{
+	list-style: none;
+	padding: 10px;	
+}
+
+.navegacao li:hover{
+	background: #7b78787a;
 }

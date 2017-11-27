@@ -9,10 +9,10 @@
 				<div class="form">
 					<form class="login-form" action="" method="POST">	
 						{% csrf_token %}
-						{%if sucess %}
-							<h1>A senha foi alterados com sucesso</h1>
+						{%if success %}
+							<h1>Senha alterada com sucesso</h1>
 						{%endif%}
-						<p class="texto">Editar</p></br>
+						<p class="texto">Alterar Senha</p></br>
         				{{ form.non_field_errors }}
 			        	{% for campo in form %}	
 			        		{{ campo.label_tag }}

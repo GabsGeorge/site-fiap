@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect , HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.views.generic import View, TemplateView, CreateView, UpdateView
 from django.conf import settings 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,8 +11,7 @@ from core.models import Curso
 from core.models import Disciplina
 from core.models import Aluno
 from core.models import Professor
-
-
+from core.models import Matricula
 
 #Aqui estão as paginas views do template
 
@@ -35,10 +34,7 @@ def redirec(request):
 @login_required(login_url="entrar")
 @user_passes_test(checa_aluno)
 def aluno(request):
-	contexto = {
-		"aluno":Aluno.objects.all()
-	}
-	return render(request, "aluno.html", contexto)
+	return render(request, "aluno.html")
 
 @login_required(login_url="entrar")
 @user_passes_test(checa_professor)
@@ -74,6 +70,7 @@ if dia >= 29:
 '''
 
 #codigo principal para os minutos 
+
 def questionario(request):
 	horaa=datetime.now()
 	hora=horaa.hour
@@ -96,7 +93,7 @@ def editarConta(request):
         if form.is_valid():
             form.save()
             form = EditaContaForm(instance=request.user)
-            context['success'] = True
+            contexto['success'] = True
     else:
         form = EditaContaForm(instance=request.user)
     contexto['form'] = form
@@ -117,3 +114,11 @@ def editarSenha(request):
         form = PasswordChangeForm(user=request.user)
     context['form'] = form
     return render(request, template_name, context)    
+
+
+def Boletim(request):
+    contexto = {
+        'boletim': Cadastro_Boletim.objects.all()
+        
+    }
+    return render(request,"boletim.html", contexto)

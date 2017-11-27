@@ -8,7 +8,13 @@ from core.models import Aluno
 from core.models import Disciplina
 from core.models import Professor
 from core.models import Matricula
+from core.models import Cadastro_Boletim
 
+
+
+
+class BoletimAdmin(admin.ModelAdmin):
+    list_display = ["nome_disciplina", "regular", "ra_aluno", "curso" ]
 
 
 class CursoAdmin(admin.ModelAdmin):
@@ -88,3 +94,4 @@ admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Disciplina)
 admin.site.register(Professor, ProfessorAdmin)
 admin.site.register(Matricula)
+admin.site.register(Cadastro_Boletim, BoletimAdmin)

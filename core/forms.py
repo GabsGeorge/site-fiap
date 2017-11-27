@@ -1,7 +1,7 @@
 from django import forms
 
 from core.models import Curso
-from core.models import Usuario
+from core.models import Aluno
 
 class CursoForm(forms.ModelForm):
 
@@ -27,11 +27,11 @@ class EditaContaForm(forms.ModelForm):
     def clean_email(self):
     #Verifica se Email ja está cadastrado para poder editar    
         email = self.cleaned_data['email']
-        queryset = Usuario.objects.filter(email=email).exclude(pk=self.instance.pk)
+        queryset = Aluno.objects.filter(email=email).exclude(pk=self.instance.pk)
         if queryset.exists():
             raise forms.ValidationError('Já existe usuário com este E-mail')
         return email
 
     class Meta:
-        model = Usuario
-        fields = ('nome','email','password')
+        model = Aluno
+        fields = ('nome','email','celular','imagemAluno','ativo')

@@ -12,10 +12,9 @@
 						<p class="texto">Login</p></br>
         						{{ form.as_p}}
         						{% csrf_token %}
-        					<input type="submit" name="entrar" id="btn_entrar" value="Entrar"/>
+        					<input type="submit" name="entrar" id="btn_entrar" value="Conectar"/>
 
-						<p class="senha_mensagem">Nao se registrou? <a href="cadastro_aluno.html">Crie sua conta</a></p>
-						<p class="senha_mensagem">Esqueceu sua senha ? <a href="esqueci_senha.html">Clique aqui!</a></p> 
+						<p class="senha_mensagem">Esqueceu sua senha ? <a href="{% url 'editar-senha' %}">Clique aqui!</a></p> 
 						
 					</form>
 				</div>
