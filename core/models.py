@@ -65,7 +65,7 @@ class Usuario(AbstractBaseUser):
     ra = models.IntegerField(db_column='RA', unique=True)
     password = models.CharField(db_column='Senha',max_length=200)
     nome = models.CharField(db_column='Nome',max_length=100)
-    email = models.EmailField(db_column='Email',max_length=50)
+    email = models.EmailField(db_column='E-mail',max_length=50)
     
 
     perfil = models.CharField(db_column='Perfil',max_length=50)
@@ -113,7 +113,7 @@ class Aluno(Usuario):
 
 class Gradecurricular(models.Model):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.
-    ano = models.SmallIntegerField(db_column='Ano')  # Field name made lowercase.
+    ano = models.SmallIntegerField(db_column='Ano',unique=True)  # Field name made lowercase.
     semestre = models.CharField(db_column='Semestre', max_length=1)  # Field name made lowercase.
 
     def __str__(self):
@@ -178,7 +178,13 @@ class Turma(models.Model):
     ra_professor = models.ForeignKey(Professor, models.DO_NOTHING,  related_name='RA_Professor')  # Field name made lowercase.
     turno = models.CharField(db_column='Turno', max_length=15)  # Field name made lowercase.
 
+    class Meta:
+        verbose_name = 'Turma'
+        verbose_name_plural = 'Turmas'
+        ordering = ['nome_disciplina']
 
+    def __str__(self):
+        return str(self.nome_disciplina)
 
 class Cursoturma(models.Model):
     sigla_curso = models.ForeignKey(Curso, models.DO_NOTHING, db_column='Sigla_Curso')  # Field name made lowercase.

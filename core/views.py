@@ -12,6 +12,7 @@ from core.models import Disciplina
 from core.models import Aluno
 from core.models import Professor
 from core.models import Matricula
+from core.models import Cadastro_Boletim
 
 #Aqui estão as paginas views do template
 
@@ -125,7 +126,7 @@ def editarSenha(request):
     return render(request, template_name, context)    
 
 
-def Boletim(request):
+def boletim(request):
     contexto = {
         'boletim': Cadastro_Boletim.objects.all()        
     }

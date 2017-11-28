@@ -28,7 +28,7 @@ from core.views import questionario
 from core.views import editarConta
 from core.views import editarSenha
 from core.views import redirec
-from core.views import Boletim
+from core.views import boletim
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -48,7 +48,7 @@ urlpatterns = [
     url(r'^EAD', questionario, name="EAD"),
     url(r'^editar-conta', editarConta, name="editar-conta"),
     url(r'^editar-senha', editarSenha, name="editar-senha"),
-    url(r'^boletim', Boletim),
+    url(r'^boletim', boletim, name="boletim"),
     url(r'^redirec', redirec)
     
  ]

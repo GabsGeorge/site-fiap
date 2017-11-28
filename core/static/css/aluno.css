@@ -1,7 +1,20 @@
 
-
 .container{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: auto auto ;
 	height: 600px;
+}
+
+
+.navegacao{
+	border:solid 1px #fff;
+	max-width: 265px;
+	min-width: 265px;
+	height: 400px;
+	color: #fff;
+	position: relative;
+	top: 15%;
 }
 
 .navegacao h1{
@@ -11,17 +24,6 @@
 	max-width: 250px;
 	background-color: #db1858;
 
-}
-
-.navegacao{
-	border:solid 1px #fff;
-	max-width: 265px;
-	min-width: 265px;
-	height: 400px;
-	color: #fff;
-	position: relative;
-	left: 5%;
-	top: 15%;
 }
 
 
@@ -38,3 +40,6 @@
 .navegacao li:hover{
 	background: #7b78787a;
 }
+
+
+

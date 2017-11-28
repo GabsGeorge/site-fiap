@@ -15,6 +15,14 @@ from core.models import Periodo
 from core.models import Periododisciplina
 from core.models import Turma
 
+class TurmaAdmin(admin.ModelAdmin):
+    list_display = ["nome_disciplina", "ano_ofertado","semestre_ofertado", "id_turma","ra_professor","turno"] # lista  uma tabela de cursos com os dados listados
+    search_fields = ["semestre_ofertado", "ano_ofertado"] # realiza busca de cursos por nome
+    filter_horizontal = []
+    ordering = ["nome_disciplina"]
+    list_filter = ["nome_disciplina"]
+
+
 class MatriculaAdmin(admin.ModelAdmin):
     list_display = ["ra_aluno", "nome_disciplina", "ano_ofertado","semestre_ofertado", "id_turma"] # lista  uma tabela de cursos com os dados listados
     search_fields = ["semestre_ofertado", "ano_ofertado"] # realiza busca de cursos por nome
@@ -140,6 +148,7 @@ class AlunoAdmin(UserAdmin):
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Disciplina)
+admin.site.register(Turma, TurmaAdmin)
 admin.site.register(Professor, ProfessorAdmin)
 admin.site.register(Matricula, MatriculaAdmin)
 admin.site.register(Usuario, UsuariomAdmin)
